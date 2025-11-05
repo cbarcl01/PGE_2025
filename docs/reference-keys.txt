@@ -14,7 +14,6 @@ charlie-barclay
 data-and-compute-setup
 course-data-downloads
 compute-setup
-part-modules
 module-1-data-curation-and-data-sharing
 lecture
 lab
