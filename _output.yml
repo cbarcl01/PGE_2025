@@ -18,7 +18,7 @@ bookdown::gitbook:
          </a>
         <li><center><strong><a href="./"><br><br><br></a></strong></center></li>
         <a href="./">
-         <img src="img/missingimg.png" width="70%" alt=" logo" style="display:block; margin-left:auto; margin-right:auto; ">
+         <img src="img/pge-icon.png" width="70%" alt=" logo" style="display:block; margin-left:auto; margin-right:auto; ">
          </a>
         <br>
 
@@ -31,6 +31,8 @@ bookdown::gitbook:
         <a href="https://www.ontariogenomics.ca/"><img src="img/sponsors/ontariogenomics.png" height="55" style="display:inline-block;" style="padding-bottom: 20px;" alt="Ontario Genomics logo.">
         <br><br>
         <a href="https://oicr.on.ca/"><img src="img/sponsors/oicr.png" width=35% style="display:inline-block;" style="padding-bottom: 20px" alt="Ontario Institute for Cancer Research logo.">
+        <br><br>
+        <a href="https://uhn.ca/"><img src="img/sponsors/uhnlogo.png" width=55% style="display:inline-block;" style="padding-bottom: 20px" alt="University Health Network logo.">
 
 
     edit: https://github.com/bioinformaticsdotca//blob/main/%s
