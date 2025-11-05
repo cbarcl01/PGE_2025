@@ -1,6 +1,6 @@
 # Meet Your Faculty
 
-<!--#### Angela McLaughlin
+#### Angela McLaughlin
 
 <img src="./img/faculty/angela-mclaughlin.jpg" width="200" alt="Photo of Angela McLaughlin">
 
@@ -66,13 +66,16 @@ Idowu is a postdoctoral associate in the Guthrie Lab at the University of Wester
 
 #### Jennifer Guthrie
 
-<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+More info coming soon
 
->JOB TITLE <br>
-INSTITUTION <br>
-LOCATION
+#### Charlie Barclay
+
+<img src="./img/faculty/charlie-barclay.jpg" width="200" alt="Photo of Charlie Barclay">
+
+>MSc Graduate Student Researcher <br>
+University of British Columbia <br>
+Vancouver, BC, Canada
 >
-> --- CONTACT INFO, IF PROVIDED
+> --- cbarcl01@mail.ubc.ca
 
-BIO GOES HERE
-
+Charlie is an ontology curator at the Centre for Infectious Disease Genomics and One Health (CIDGOH), focusing on data standards for contextual data of genomic epidemiology, including wastewater surveillance. With five years of experience in data management, specializing in biodiversity and genomics data, she also actively contributes to the Public Health Alliance for Genomic Epidemiology (PHA4GE) and the Global Alliance for Genomics and Health (GA4GH).

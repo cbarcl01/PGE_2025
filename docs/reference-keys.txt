@@ -4,6 +4,13 @@ pre-work
 class-photo
 schedule
 meet-your-faculty
+angela-mclaughlin
+emma-griffiths
+finlay-maguire
+gary-van-domselaar
+idowu-olawoye
+jennifer-guthrie
+charlie-barclay
 data-and-compute-setup
 course-data-downloads
 compute-setup
