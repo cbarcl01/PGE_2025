@@ -1,6 +1,6 @@
-# Module 2
+# Module 2 Emerging Pathogen Detection and Identification
 
-## Lecture
+## Lecture 
 
 
 ## Lab

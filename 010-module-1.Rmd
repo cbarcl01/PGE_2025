@@ -1,6 +1,6 @@
 # (PART) Modules {-}
 
-# Module 1
+# Module 1 Data Curation and Data Sharing
 
 ## Lecture
 
