@@ -1,7 +1,7 @@
 --- 
-title: " "
-author: "Faculty: "
-date: ""
+title: "Pathogen Genomic Epidemiology 2025"
+author: "Faculty: Angela McLaughlin, Emma Griffiths,Finlay Maguire, Gary Van Domselaar, Idowu Olawoye, Jennifer Guthrie, Charlie Barclay"
+date: "November 24-26, 2025"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
