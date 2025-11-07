@@ -1,16 +1,16 @@
 --- 
 title: "Pathogen Genomic Epidemiology 2025"
-author: "Faculty: Angela McLaughlin, Emma Griffiths,Finlay Maguire, Gary Van Domselaar, Idowu Olawoye, Jennifer Guthrie, Charlie Barclay"
+author: "Faculty: Aaron Petkau, Emma Griffiths, William Hsiao, Finlay Maguire"
 date: "November 24-26, 2025"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-url: https://bioinformaticsdotca.github.io// 
+url: https://bioinformaticsdotca.github.io/PGE_2025/ 
 cover-image: img/bioinformatics_logo.png
 description: |
-  Workshop website for the   Canadian Bioinformatics Workshop
+  Workshop website for the 2025 Pathogen Genomic Epidemiology Canadian Bioinformatics Workshop
 link-citations: yes
-github-repo: bioinformaticsdotca/
+github-repo: bioinformaticsdotca/PGE_2025
 favicon: img/favicon.ico
 ---
 
@@ -18,7 +18,7 @@ favicon: img/favicon.ico
 
 # Workshop Info
 
-Welcome to the   Canadian Bioinformatics Workshop webpage!  
+Welcome to the 2025 Pathogen Genomic Epidemiology Canadian Bioinformatics Workshop webpage!  
 
 ## Pre-work
 
