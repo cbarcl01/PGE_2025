@@ -66,15 +66,15 @@ Idowu is a postdoctoral associate in the Guthrie Lab at the University of Wester
 
 #### Jennifer Guthrie
 
-<img src="./img/faculty/MISSINGHEADSHOT.PNG" width="200" alt="Photo of NAME">
+<img src="./img/faculty/jennifer-guthrie.jpeg" width="200" alt="Photo of Jennifer Guthrie">
 
->JOB TITLE <br>
-INSTITUTION <br>
-LOCATION
+>Assistant Professor <br>
+University of Western Ontario <br>
+London, ON, Canada
 >
-> --- CONTACT INFO, IF PROVIDED
+> --- jennifer.guthrie@uwo.ca
 
-BIO GOES HERE
+Dr. Jennifer Guthrie is a Canada Research Chair in Pathogen Genomics and Bioinformatics and Assistant Professor in the Departments of Microbiology & Immunology and Epidemiology & Biostatistics at Western University; she also serves as an Adjunct Scientist at Public Health Ontario. A genomic epidemiologist by training, in her research Dr. Guthrie uses interdisciplinary approaches combining principles from data science and bioinformatics, and more traditional epidemiology and microbiology methods to further our understanding of disease transmission dynamics, antimicrobial resistance, and epidemiological characteristics of pathogens. Her research involves pathogens of public health importance such as SARS-CoV-2, influenza, Mycobacterium tuberculosis, and methicillin resistant Staphylococcus aureus.
 
 #### Charlie Barclay
 
