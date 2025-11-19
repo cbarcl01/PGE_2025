@@ -1,7 +1,8 @@
 # Module 4 Outbreak Analysis
 
-Author: Finlay Maguire 
-Last Modified: November 11, 2025
+*Author: Finlay Maguire*
+
+*Last Modified: 2025-11-11*
 
 ## Lecture
 
@@ -40,7 +41,9 @@ Within the SCBU/NICU of Cambridge University Hopitals NHS Trust (and most hospit
 Routine surveillance has identified that 3 infants within the SCBU/NICU (P11-P13) are positive for MRSA carriage at the same time. Isolates from these 3 infants have also been shown to have the same pattern of antibiotic resistances. The IPAC team has therefore been activated to further investigate this as a suspected outbreak in the SCBU/NICU at CUH. 
 They have performed a systematic review of all MRSA isolates from the SCBU/NICU over the preceding 6-12 months and identified a series of overlapping MRSA carriages with this same set of resistances. Due to multi-week gaps in the positive SCBU/NICU isolates they have also collected potentially matching MRSA isolates from parents and the wider hospital/community.  To gain better insight into this potential outbreak and identify which of these isolates are linked by direct transmission chains, CUH have sequenced these isolates using 150bp paired-end reads via an Illumina MiSeq platform.
 
-**You are a clinical bioinformatician who has been asked to support the investigation and analyses these genomes**
+:::: {.callout type="purple"}
+You are a clinical bioinformatician who has been asked to support the investigation and analyses these genomes
+::::
 
 <a name="setup"></a>
 
@@ -50,11 +53,10 @@ This lab practical will involve running the following software:
 
 * [mlst](https://github.com/tseemann/mlst)
 * [poppunk](https://github.com/bacpop/PopPUNK)
-* [SKA](https://github.com/bacpop/ska.rust)
+* [ska](https://github.com/bacpop/ska.rust)
 * [gubbins](https://github.com/nickjcroucher/gubbins)
-* [iqtree](https://github.com/iqtree/iqtree3)
-* [treetime](https://github.com/xavierdidelot/BactDating)
-* [transphylo](https://github.com/xavierdidelot/TransPhylo)
+* [IQTree](https://github.com/iqtree/iqtree3)
+* [GraphSNP](https://graphsnp.fordelab.com/)
 
 :::: {.callout type="blue" style="subtle" title="Note: Bioinformatics in Practice" collapsible="true"}
 
@@ -85,7 +87,7 @@ Specific collection dates were not available so have been inferred based on rela
 ::::
 
 When you are finished with these steps you should be inside your work directory `~/workspace/module4`. You can verify this by running the command `pwd`.
-
+s
 **Output after running `pwd`**
 
 ```bash
@@ -94,7 +96,7 @@ When you are finished with these steps you should be inside your work directory 
 
 You now see an `assemblies/` folder in the current directory along with a `contextual_metadata.tsv` (all the contextual data needed for this analysis) and `SASCBU26_reference.fna` (the reference genome we will use later):
 
-**Output after running `ls`**
+**Output after running `ls`**s
 
 ```bash
 SASCBU26_reference.fna  assemblies  contextual_data.csv
@@ -147,7 +149,7 @@ You can infer the 7-gene MLST using the [pubMLST *Staphylococcus aureus* scheme]
 
 ```bash
 mkdir -p outbreak_cluster_identification; cd outbreak_cluster_identification
-mlst --scheme saureus ../assemblies/\*.fa > mlst.tsv
+mlst --scheme saureus ../assemblies/*.fa > mlst.tsv
 ```
 
 Now download the `mlst.tsv` output file (using either `scp` or the IP address listed above) and open it in your tabular data tool of choice (e.g., pandas/python, R, excel).
@@ -156,11 +158,12 @@ Now download the `mlst.tsv` output file (using either `scp` or the IP address li
 
 :::: {.callout type="green" title="Answer" collapsible="true"}
 
-P27 & P28 have different MLSTs to any other genome, P29, 34-38 (with P37 a partial match) could be an ST22 outbreak, P30-33 could be an ST772 outbreak, and the rest all belonging to this large ST2731 grouping
+- P27 & P28 have different MLSTs (ST1 and ST8) to any other genome so unlikely to be linked to an outbreak.
+- P29 & P34-38 (with P37 a partial match) could be an ST22 outbreak.
+- P30-33 could be an ST772 outbreak.
+- All remaining isolates belong to a large ST2731 set
 
 ::::
-
-However, MLST is only 7 genes so we are leaving lots of information on the table using just MLST.  
 
 **Why might genomes with a different MLST still be closely related or those with the same MLST be relatively unrelated?**
 
@@ -174,7 +177,7 @@ We could solve this challenge using a more fine-grained scheme like cg/wgMLST (a
 
 `poppunk` is a rapid k-mer based genome clustering tool that groups genomes together based on both their core and accessory genome distances.  This allows differential clustering of similar genomes which have acquired novel plasmids and so on.  
 
-The developers of poppunk provide some pre-computed databases (although it is easy to create your own) for different species which are available [here](https://www.bacpop.org/poppunk-databases/).
+The developers of poppunk provide some pre-computed databases (although it is relatively easy to create your own) for different species which are available [here](https://www.bacpop.org/poppunk-databases/).
 
 We have already downloaded a reference database for you, so all you have to do is prepare a 2-column file `genomes.txt` which has a series of names in the first column and the path to the related genome assembly in the other.
 We can do this using a quick bash one-line loop:
@@ -186,7 +189,7 @@ for i in ../assemblies/*.fa; do isolate=$(echo $i | cut -d '/' -f3 | cut -d '.' 
 Then we can run the following to get poppunk cluster assignments:
 
 ```bash
-poppunk_assign --db ~/CourseData/module4/staphylococcus_aureus_v1_full --query genomes.txt --output poppunk --threads 4
+poppunk_assign --db ~/CourseData/module4/staphylococcus_aureus_v1_full --query genomes.txt --output poppunk
 ```
 
 Now download/inspect `poppunk/poppunk_clusters.csv` file 
@@ -195,8 +198,13 @@ Now download/inspect `poppunk/poppunk_clusters.csv` file
 
 :::: {.callout type="green" title="Answer" collapsible="true"}
 
-Almost all samples other than P27-28 and P30-33 are assigned to different clusters. This matches the singleton STs for the MLST and the ST22 group but the ST772 and ST2371 have been clustered together.  If we look carefully at the MLST profile for these STs in `mlst.tsv` we can see some overlap in alleles but not that many.  As we aren't sure what this means for now, let's drop the unrelated clusters P27-P28 and P30-P33 and continue with our analysis 
+P27-28 are assigned to cluster 1 and P30-33 are assigned cluster 12.  Remaining samples are assigned to cluster 3. 
 
+- P27 and P28 were different singleton STs for MLST that share a few alleles so supports eliminating them
+- P30-33 were ST772 so poppunk and MLST agree and support eliminating these samples (although they could be their own distinct outbreak)
+- ST22 and ST2731 isolates were both assigned to cluster 3. If we look carefully at the MLST profile for these STs in `mlst.tsv` we can see that these STs only differ by a single allele (arcC) so could be linked in the main outbreak.
+
+We can't be sure about cluster 3 without further analysis but we can drop cluster 1 and 12 for now.
 ::::
 
 <a name="snp"></a>
@@ -206,14 +214,14 @@ Almost all samples other than P27-28 and P30-33 are assigned to different cluste
 Now that we have eliminated some isolates that are unlikely to be connected to our main outbreak we can do a deeper analysis of the evolutionary relationships between our isolates.  For this we are going to perform a phylogenetic analysis. There are several way this could be done: 
 
 - Inferring and aligning the core genome of our isolates by running a tool like `panaroo` on the genome assembly annotation files (generated with `prokka` or `bakta`).
-- Mapping individual reads against a reference genome (e.g., a standard external reference or the suspected outbreak index case) with a tool like `snippy`.
-- Mapping split-kmer distance from a reference genome using SKA2
+- Mapping individual reads against a reference genome with a tool like `snippy`.
+- Mapping SNPs between genomes using `ska` (then using a reference to order these SNPs)
 
-**Why might we want to use the suspected index case as our reference genome?**
+**For SNP analyses, why might we want use a reference derived from an outbreak isolate instead of standard species reference genome?**
 
 :::: {.callout type="green" title="Answer" collapsible="true"}
 
-To maximise the number of SNPs we can detect by using a reference as close as possible to our other genomes
+We maximise the number of detectable SNPs by using a reference as close as possible to our other genomes
 
 ::::
 
@@ -223,103 +231,150 @@ First let's generate the input file for SKA using the poppunk results
 
 ```bash
 cd ~/workspace/module4; mkdir -p ska_phylogeny; cd ska_phylogeny
-paste <(grep "3$" ../outbreak_cluster_identification/poppunk/poppunk_clusters.csv | cut -d, -f1) <(grep "3$" outbreak_cluster_identification/poppunk/poppunk_clusters.csv | cut -d, -f1 | sed 's/^/../assemblies\//g' | sed 's/$/.fa/g') > ska_input
-echo -e "HO50960412\t../HO50960412_reference.fasta" >> ska_input
+paste <(grep "3$" ../outbreak_cluster_identification/poppunk/poppunk_clusters.csv | cut -d, -f1) <(grep "3$" ../outbreak_cluster_identification/poppunk/poppunk_clusters.csv | cut -d, -f1 | perl -ne 'chomp; print "../assemblies/$_.fa\n"' ) > ska_input
+echo -e "SASCBU26\t../SASCBU26_reference.fna" >> ska_input
 ```
 
 Now we need to generate an SKA index:
 
 ```bash
-mkdir -p ska
-ska build -f ska_input -k 31 -o ska/ska_index --threads 4
+ska build -f ska_input -k 31 -o ska_index --threads 4
 ```
 
-Then map these split k-mers against the reference:
+Then map these split k-mers against the reference (required to order them for the next step):
 
 ```bash
-ska map -o ska/ska.aln --ambig-mask --threads 4 SASCBU26_reference.fna ska/ska_index.skf
+ska map -o ska.aln --ambig-mask ../SASCBU26_reference.fna ska_index.skf
 ```
 
-This gives us an alignment but due to the rate of recombination in many bacteria we typically want to try and remove remove recombination from the alignment.
-There are several tools that can help us do this (`verticall`, `ClonalFrameML`, `gubbins`) and today we are going to use gubbins.
+This gives us an alignment but due the distorting effects of recombination we typically want to try and remove any potential recombinant sites from the alignment.  There are several tools that can help us do this (`verticall`, `ClonalFrameML`, `gubbins`) and today we are going to use `gubbins`.
 
 ```bash
 mkdir -p gubbins
-run_gubbins.py --prefix gubbins/gubbins ska/ska.aln
-mask_gubbins_aln.py --aln ska/ska.aln --gff gubbins.recombination_predictions.gff --out gubbins.masked.aln
+run_gubbins.py --prefix gubbins/gubbins ska.aln
+mask_gubbins_aln.py --aln ska.aln --gff gubbins/gubbins.recombination_predictions.gff --out gubbins.masked.aln
 ```
 
-Now that we have a masked alignment we can analyse the SNP network using GraphSNP to further refine our potential outbreak samples.
+Now that we have a masked alignment `gubbins.masked.aln` we can analyse the SNP network using [GraphSNP](https://graphsnp.fordelab.com/) to further refine our potential outbreak samples.  First, generate a SNP distance matrix using `snp-dists`:
 
-Download the aligned reference 
+```bash
+snp-dists gubbins.masked.aln | sed 's/\t/,/g' > raw_outbreak_matrix.csv
+```
 
-Navigate to [GraphSNP](https://graphsnp.fordelab.com/) in your browser and upload the new masked alignment and the metadata.
+Now download the `raw_outbreak_matrix.csv`, navigate to [GraphSNP](https://graphsnp.fordelab.com/) in your browser, and upload the `raw_outbreak_matrix.csv` as your Alignment/matrix.
 
-Then click the 3 horizontal lines on the top of the webpage and go to "Graph".
+```{r echo=FALSE}
+  knitr::include_graphics("content-files/graphsnp_upload.jpg") 
+```
 
-Create graph using the clustering analysis type and look at the structure of the SNP minimum spanning tree.
+Then click on "Graph" at the top of the page (may be hidden behind 3 horizontal lines on smaller screens), increase your "Cutoff number" to 50, and then hit the "Create Graph" button.
 
-**Which genomes do you think you can eliminate from the immediate outbreak cluster?**
+```{r echo=FALSE}
+  knitr::include_graphics("content-files/graphsnp_cluster.jpg") 
+```
+
+This will create a minimum spanning tree grouped using a 50 SNP cut-off.
+
+**Which genomes do you think you can eliminate from being part of these immediate outbreak cluster?**
 
 :::: {.callout type="green" title="Answer" collapsible="true"}
-P34-38 and P29 - our earlier ST22 samples which MLST would have ruled out but poppunk convinced us to look a bit more closely at!
+
+Based on the graph, isolates P29 & P34-P38 can be eliminated.  These were the ST22 isolates identified by `mlst` that poppunk convinced us to look at a bit more closely.  We can see the closest is only ~80 SNPs from our outbreak cluster.
+ 
 ::::
 
-Infer a phylogeny from the masked alignment:
+Let's also look at these isolates using a traditional phylogenetic approach. Go back to the server and run the following command to build a maximum-likelihood tree using `iqtree`:
 
 ```bash
 iqtree -s gubbins.masked.aln
 ```
+This will generate a lot of outputs but if you download the newick formatted phylogeny `gubbins.masked.aln.treefile` and go to [microreact](https://microreact.org/upload) we can visualise the tree.
 
-Download the generated `gubbins.masked.aln.treefile` and go to [microreact](https://microreact.org/upload).
-Upload the tree and using the Tree Type button at the top right select radial/unrooted tree.
+Hit the "Upload" button and select your treefile.
+```{r echo=FALSE}
+  knitr::include_graphics("content-files/microreact_upload.jpg") 
+```
+
+```{r echo=FALSE}
+  knitr::include_graphics("content-files/microreact_upload2.jpg") 
+```
+
+Then hit the settings slider icon at the top right 
+
+```{r echo=FALSE}
+  knitr::include_graphics("content-files/microreact_upload3.jpg") 
+```
+
+Finally, select radial/unrooted tree.
+
+```{r echo=FALSE}
+  knitr::include_graphics("content-files/microreact_upload4.jpg") 
+```
 
 **Does the phylogeny show the same genomes as being outside the main outbreak cluster**
 
 :::: {.callout type="green" title="Answer" collapsible="true"}
-Yes
+Yes, P37 & P38 are close to the main outbreak cluster and could be included but for now we will exclude them.
+::::
+
+
+Now we have refined our final set of suspected outbreak isolates we can create our final alignment of just these sequences.
+
+**Create a SNP distance matrix and phylogeny for just the final outbreak isolates by repeating the above steps with a modified ska_input (if you create a new folder you'll avoid getting mixed up with your new datas).**
+
+:::: {.callout type="blue" style="subtle" title="If stuck/time-crunched" collapsible="true"}
+
+A pre-computed distance matrix and phylogeny can be copied from `~/CourseData/module4/refined_outbreak_matrix.csv` and `~/CourseData/module4/refined.gubbins.masked.aln.treefile` 
+
 ::::
 
 <a name="trans"></a>
-
 ### Transmission Inference
 
-Now we have refined our final set of suspected outbreak isolates we are going to perform some transmission analyses.  First we are going to use the SeqTrack method as implemented in graphSNP.
+With our refined outbreak distance matrix and phylogeny we are going to perform some transmission analyses by combining these with some of our context data.  
 
-**Create a new gubbins-masked SKA alignment excluding the non-outbreak genomes (but retaining the HO50960412 reference genome). Hint: edit the ska_input file and ensure you update the output/prefixes for ska and gubbins.**
+First we are going to use the [SeqTrack](https://pmc.ncbi.nlm.nih.gov/articles/PMC3183872/) method as implemented in [GraphSNP](https://graphsnp.fordelab.com/).
 
->! A pre-computed version is available at 
+To do this download  `contextual_metadata.csv` and your refined distance matrix (e.g., `refined_outbreak_matrix.csv` or whatever you have named it) and then navigate to [GraphSNP](https://graphsnp.fordelab.com/).  
+This time you must upload the new distance matrix under Alignment/matrix and the metadata table under Metadata.
 
-Download the `contextual_metadata.csv` and new masked alignment.
+```{r echo=FALSE}
+  knitr::include_graphics("content-files/graphsnp_upload.jpg") 
+```
 
-Navigate to [GraphSNP](https://graphsnp.fordelab.com/) in your browser and upload the new masked alignment and the metadata.
 
-Then click the 3 horizontal lines on the top of the webpage and go to "Graph" but this time select analysis type "transmission".
+Then navigate to "Graph" but this time select analysis type "transmission" and click "Create Graph"
 
-Colour the nodes by host
+
+```{r echo=FALSE}
+  knitr::include_graphics("content-files/graphsnp_transmission.jpg") 
+```
+
 
 **Which person is inferred to have infected the largest number of other patients?**
 
 :::: {.callout type="green" title="Answer" collapsible="true"}
-P2
+P8 or P4
 ::::
 
-**Which baby was inferred to be infected by a parent?**
+**Which baby/babies was/were inferred to be infected by a parent?**
 
 :::: {.callout type="green" title="Answer" collapsible="true"}
-P15
+P13 and P15 
 ::::
 
-Now let's try a more sophisticated transmission inference method using `transphylo`.
+:::: {.callout type="purple"}
+Congratulations you've performed your first transmission analysis!
+::::
 
-To do this we need to create a phylogeny and then infer the dates on the phylogeny, for this we are going to dip into R.
+The next step would be to try and perform a more sophisticated transmission inference method using `TransPhylo`.
+However, this would require us to infer a time-scaled phylogeny and you'll discover more about how to do that in the next module!
 
-Navigate to the instance RStudio Server: http://xxx.uhn-hpc.ca:8080
-
+<!--
 ```R
-library(bactdating)
+library(BactDating)
 dist_tree <- ape::read.tree("~/workspace/module4/PATH_TO_FINAL_IQTREE.tre")
-dist_tree <- ape::drop.tip(dist_tree, "HO50960412")
+
 dates <- read.csv("~/CourseData/module4/contextual_data.csv") 
 rownames(dates) <- dates$sample_id
 dates <- lubridate::decimal_date(lubridate::ymd(dates[dist_tree$tip.label, "collection_date"]))
@@ -335,3 +390,4 @@ Now we can use transphylo to perform transmission inference
 library(TransPhylo)
 ptree<-ptreeFromPhylo(ttree,dateLastSample=max(dates))
 ```
+-->
