@@ -343,11 +343,11 @@ Coming soon!
   \hyperref[final]{Final words}
 \end{enumerate}
 
-\#\#\# 1. Introduction
+\subsection{1. Introduction}\label{intro}
 
 This tutorial aims to introduce a variety of software and concepts related to detecting emerging pathogens from a complex host sample. The provided data and methods are derived from real-world data, but have been modified to either illustrate a specific learning objective or to reduce the complexity of the problem. Contamination and a lack of large and accurate databases render detection of microbial pathogens difficult. As a disclaimer, all results produced from the tools described in this tutorial and others must also be verified with supplementary bioinformatics or wet-laboratory techniques.
 
-\#\#\# 2. List of software for tutorial and its respective documentation
+\subsection{2. List of software for tutorial and its respective documentation}\label{software}
 
 \begin{itemize}
 \tightlist
@@ -371,7 +371,7 @@ This tutorial aims to introduce a variety of software and concepts related to de
 
 The workshop machines already have this software installed within a conda environment, but to perform this analysis later on, you can make use of the conda environment located at \url{environment.yml} to install the necessary software.
 
-\#\#\# 3. Exercise setup
+\subsection{3. Exercise setup}\label{setup}
 
 \subsection{3.1. Copy data files}\label{copy-data-files}
 
@@ -427,9 +427,9 @@ Copyright 2013-2023, Derrick Wood (dwood@cs.jhu.edu)
 
 This exercise will produce output files intended to be viewed in a web browser. These should be accessible by going to \url{http://xx.uhn-hpc.ca} in your web browser where \textbf{xx} is your particular number (like 01, 02, etc). If you are able to view a list of files and directories, try clicking the link for \textbf{module2\_workspace}. This page will be referred to later to view some of our output files. In addition, the link \textbf{precompuated-analysis} will contain all the files we will generate during this lab.
 
-\#\#\# 4. Exercise
+\subsection{4. Exercise}\label{exercise}
 
-\#\#\# 4.1. Patient Background:
+\subsection{4.1. Patient Background:}\label{exercise-background}
 
 A 41-year-old man was admitted to a hospital 6 days after the onset of disease. He reported fever, chest tightness, unproductive cough, pain and weakness. Preliminary investigations excluded the presence of influenza virus, \emph{Chlamydia pneumoniae}, \emph{Mycoplasma pneumoniae}, and other common respiratory pathogens. After 3 days of treatment the patient was admitted to the intensive care unit, and 6 days following admission the patient was transferred to another hospital.
 
@@ -437,7 +437,7 @@ To further investigate the cause of illness, a sample of bronchoalveolar lavage 
 
 \emph{Note: The patient information and data was derived from a real study (shown at the end of the lab).}
 
-\#\#\# 4.2. Overview
+\subsection{4.2. Overview}\label{exercise-overview}
 
 We will proceed through the following steps to attempt to diagnose the situation.
 
@@ -457,11 +457,11 @@ We will proceed through the following steps to attempt to diagnose the situation
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\#\#\# Assembly-free approach
+\subsection{Assembly-free approach}\label{assembly-free}
 
 The first set of steps follows through an assembly-free approach where we will perform taxonomic classification of the reads without constructing a metagenomics assembly.
 
-\#\#\#\# Step 1: Examine the reads
+\subsubsection{Step 1: Examine the reads}\label{exercise-examine-reads}
 
 Let's first take a moment to examine the reads from the metatranscrimptomic sequencing. Note that for metatranscriptomic sequencing, while we are sequencing the RNA, this was performed by first generating complementary DNA (cDNA) to the RNA and sequencing the cDNA. Hence you will see thymine (T) instead of uracil (U) in the sequence data.
 
@@ -514,7 +514,7 @@ FFFFFFFAFFFFFFAFFFFFF6FFFFFFFFF/FFFFFFFFFFFF/FFFFFFFFFFFFFFFFFAFFFFFFFFFFFAFFFFF
 
 These reads are in the \href{https://en.wikipedia.org/wiki/FASTQ_format}{FASTQ}, which stores a single read as a block of 4 lines: \textbf{identifier}, \textbf{sequence}, \textbf{+ (separator)}, \textbf{quality scores}. In this file, we can see a lot of lines with \texttt{NNN...} for the sequence letters, which means that these portions of the read are not determined. We will remove some of these undetermined (and uninformative) reads in the next step.
 
-\#\#\#\# Step 2: Clean and examine quality of the reads
+\subsubsection{Step 2: Clean and examine quality of the reads}\label{exercise-quality-reads}
 
 As we saw from looking at the data, reads that come directly off of a sequencer may be of variable quality which might impact the downstream analysis. We will use the software \href{https://github.com/OpenGene/fastp}{fastp} to both clean and trim reads (removing poor-quality reads or sequencing adapters) as well as examine the quality of the reads. To do this please run the following (the expected time of this command is shown as \texttt{\#\ Time:\ 30\ seconds}).
 
@@ -568,7 +568,7 @@ This should show an overview of the quality of the reads before and after filter
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\#\#\#\# Step 3: Host read filtering
+\subsubsection{Step 3: Host read filtering}\label{exercise-host-filtering}
 
 The next step is to remove any host reads (in this case Human reads) from our dataset as we are not focused on examining host reads. There are several different tools that can be used to filter out host reads such as Bowtie2 or KAT. In this demonstration, we have selected to run KAT followed by Kraken2, but you could likely accomplish something similar by using Bowtie2 followed by Kraken2.
 
@@ -643,7 +643,7 @@ These are the set of reads minus any reads that matched the human genome. The me
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\#\#\#\# Step 4: Classify reads using Kraken2 database
+\subsubsection{Step 4: Classify reads using Kraken2 database}\label{exercise-classify-kraken}
 
 Now that we have most, if not all, host reads filtered out, it's time to classify the remaining reads to identify the likely taxonomic category they belong to.
 
@@ -752,7 +752,7 @@ More information on interpreting this file can be found at \url{https://github.c
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\#\#\#\# Step 5: Generate an interactive html-based report using Pavian
+\subsubsection{Step 5: Generate an interactive html-based report using Pavian}\label{exercise-pavian}
 
 Instead of reading text-based files like above, we can visualize this information using \href{https://fbreitwieser.shinyapps.io/pavian/}{Pavian}, which can be used to construct an interactive summary and visualization of metagenomics data. Pavian supports a number of metagenomics analysis software outputs, including Kraken/Kraken2. To visualize the Kraken2 output we just generated, we can upload the \texttt{kraken\_report.txt} file to the web application. Please do this now using the following steps:
 
@@ -787,9 +787,9 @@ If all the steps are completed successfully then the report you should see shoul
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\#\#\# Assembly-based approach
+\subsection{Assembly-based approach}\label{assembly-based}
 
-\#\#\#\# Step 6: Metatranscriptomic assembly
+\subsubsection{Step 6: Metatranscriptomic assembly}\label{exercise-metatranscriptomic-assembly}
 
 In order to investigate the data further we will assemble the metatranscriptome using the software \href{https://github.com/voutcn/megahit}{MEGAHIT}. What this will do is integrate all the read data together to attempt to produce the longest set of contiguous sequences possible (contigs). To do this please run the following:
 
@@ -866,7 +866,7 @@ It can be a bit difficult to get an overall idea of what is in this file, so in 
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\#\#\#\# Step 7: Evaluate assembly with Quast
+\subsubsection{Step 7: Evaluate assembly with Quast}\label{exercise-evaluate-assembly}
 
 \href{http://quast.sourceforge.net/quast}{Quast} can be used to provide summary statistics on the output of assembly software. Quast will take as input an assembled genome or metagenome (a FASTA file of different sequences) and will produce HTML and PDF reports. We will run Quast on our data by running the following command:
 
@@ -927,7 +927,7 @@ This shows the length of each contig in the \texttt{megahit\_out/final.contigs.f
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\#\#\#\# Step 8: Use BLAST to look for existing organisms
+\subsubsection{Step 8: Use BLAST to look for existing organisms}\label{exercise-blast}
 
 In order to get a better handle on what the identity of the largest contigs could be, let's use \href{https://blast.ncbi.nlm.nih.gov/Blast.cgi}{BLAST} to compare to a database of existing viruses. Please run the following:
 
@@ -984,7 +984,7 @@ To view these results, please browse to \url{http://xx.uhn-hpc.ca/module2_worksp
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\#\#\# 5. Final words
+\subsection{5. Final words}\label{final}
 
 Congratulations, you've finished this lab. As a final check on your results, you can use \href{https://blast.ncbi.nlm.nih.gov/Blast.cgi}{NCBI's online tool} to perform a BLAST on our top 50 contigs to see what matches to the contigs.
 

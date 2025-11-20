@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.12.3)  20 NOV 2025 11:43
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.12.3)  20 NOV 2025 11:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -799,60 +799,9 @@ Chapter 4.
 ]
 Chapter 5.
 
-LaTeX Warning: Hyper reference `intro' on page 17 undefined on input line 296.
-
-
-LaTeX Warning: Hyper reference `software' on page 17 undefined on input line 298.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 298--300
 
  []
-
-
-LaTeX Warning: Hyper reference `setup' on page 17 undefined on input line 300.
-
-
-LaTeX Warning: Hyper reference `exercise' on page 17 undefined on input line 302.
-
-
-LaTeX Warning: Hyper reference `exercise-background' on page 17 undefined on input line 308.
-
-
-LaTeX Warning: Hyper reference `exercise-overview' on page 17 undefined on input line 310.
-
-
-LaTeX Warning: Hyper reference `assembly-free' on page 17 undefined on input line 312.
-
-
-LaTeX Warning: Hyper reference `exercise-examine-reads' on page 17 undefined on input line 318.
-
-
-LaTeX Warning: Hyper reference `exercise-quality-reads' on page 17 undefined on input line 320.
-
-
-LaTeX Warning: Hyper reference `exercise-host-filtering' on page 17 undefined on input line 322.
-
-
-LaTeX Warning: Hyper reference `exercise-classify-kraken' on page 17 undefined on input line 324.
-
-
-LaTeX Warning: Hyper reference `exercise-pavian' on page 17 undefined on input line 326.
-
-
-LaTeX Warning: Hyper reference `assembly-based' on page 17 undefined on input line 329.
-
-
-LaTeX Warning: Hyper reference `exercise-metatranscriptomic-assembly' on page 17 undefined on input line 335.
-
-
-LaTeX Warning: Hyper reference `exercise-evaluate-assembly' on page 17 undefined on input line 337.
-
-
-LaTeX Warning: Hyper reference `exercise-blast' on page 17 undefined on input line 339.
-
-
-LaTeX Warning: Hyper reference `final' on page 17 undefined on input line 343.
 
 
 
@@ -979,6 +928,8 @@ Overfull \hbox (54.0pt too wide) in paragraph at lines 703--703
  []
 
 
+
+[25]
 Overfull \hbox (6.75pt too wide) in paragraph at lines 703--703
 [] \TU/lmtt/m/n/10 55.09  621417  19584   O       171549                Bacteroidales[] 
  []
@@ -1009,8 +960,6 @@ Overfull \hbox (90.75pt too wide) in paragraph at lines 703--703
  []
 
 
-
-[25]
 Overfull \hbox (25.66pt too wide) in paragraph at lines 710--712
 []\TU/lmr/m/n/10 The very first row \TU/lmtt/m/n/10 21.93  247309  247309  U       0       unclassified
  []
@@ -1046,6 +995,13 @@ Overfull \hbox (132.75pt too wide) in paragraph at lines 741--741
  []
 
 
+
+
+Overfull \hbox (80.14453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 26 \TU/lmr/m/sl/10 CHAPTER 5.  MODULE 2 EMERGING PATHOGEN DETECTION AND IDENTIFICATION
+ []
+
+[26]
 Overfull \hbox (132.75pt too wide) in paragraph at lines 741--741
 []\TU/lmtt/m/n/10 C       SRR10971381.219 1177574 151|151 0:11 838:3 0:5 838:2 0:9 838:5 0:11 838:1 976:5 83>[] 
  []
@@ -1056,13 +1012,6 @@ Overfull \hbox (54.0pt too wide) in paragraph at lines 741--741
  []
 
 
-
-
-Overfull \hbox (80.14453pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 26 \TU/lmr/m/sl/10 CHAPTER 5.  MODULE 2 EMERGING PATHOGEN DETECTION AND IDENTIFICATION
- []
-
-[26]
 
 [27]
 Overfull \hbox (17.25pt too wide) in paragraph at lines 827--827
@@ -1080,6 +1029,13 @@ Overfull \hbox (311.25pt too wide) in paragraph at lines 827--827
  []
 
 
+
+
+Overfull \hbox (80.14453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 28 \TU/lmr/m/sl/10 CHAPTER 5.  MODULE 2 EMERGING PATHOGEN DETECTION AND IDENTIFICATION
+ []
+
+[28]
 Overfull \hbox (190.5pt too wide) in paragraph at lines 827--827
 []\TU/lmtt/m/n/10 2025-11-19 15:49:09 - 3112 contigs, total 1536607 bp, min 203 bp, max 29867 bp, avg 493 bp, N50 463 bp[] 
  []
@@ -1090,13 +1046,6 @@ Overfull \hbox (75.0pt too wide) in paragraph at lines 843--843
  []
 
 
-
-
-Overfull \hbox (80.14453pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 28 \TU/lmr/m/sl/10 CHAPTER 5.  MODULE 2 EMERGING PATHOGEN DETECTION AND IDENTIFICATION
- []
-
-[28]
 Overfull \hbox (1293.0pt too wide) in paragraph at lines 863--863
 []\TU/lmtt/m/n/10 ATACTGATCTTAGAAAGCTTAGATTTCATCTTTTCAATTGGTGTATCGAATTTAGATACAAATTTAGCTAAGGATTTAGACATTTCAGCTTTATCTACAGTAGAGTATACTTTAATATCTTGAAGTACACCAGTTACTTTAGACTTAATCAAAATTTTACCCAAATCATTAACTAGATCTTTAGAATCAGAATTCTTTTCTACCATTTTAGCGATGATATCTGTTGCATCTTGATCTTCAAATGAAGATCTATATGACATGATAGTTTGACCTTCTTGTAGTTGAGATCCAACTTCTAAACATTCGATGTCT[] 
  []
@@ -1107,13 +1056,13 @@ Overfull \hbox (1518.75pt too wide) in paragraph at lines 863--863
  []
 
 
+
+[29]
 Overfull \hbox (148.5pt too wide) in paragraph at lines 905--905
 []\TU/lmtt/m/n/10 /home/ubuntu/.conda/envs/module2-emerging-pathogen/bin/quast -t 4 megahit_out/final.contigs.fa[] 
  []
 
 
-
-[29]
 
 
 Overfull \hbox (80.14453pt too wide) has occurred while \output is active
@@ -1121,6 +1070,8 @@ Overfull \hbox (80.14453pt too wide) has occurred while \output is active
  []
 
 [30]
+
+[31]
 Overfull \hbox (214.69pt too wide) in paragraph at lines 959--960
 \TU/lmr/m/n/10 computed database of viral genomes (\TU/lmtt/m/n/10 blastn -db ~/CourseData/module2/db/blast_db/ref_viruses_rep_genomes_modified
  []
@@ -1136,8 +1087,6 @@ Overfull \hbox (2.12001pt too wide) in paragraph at lines 961--962
  []
 
 
-
-[31]
 Underfull \hbox (badness 1292) in paragraph at lines 982--983
 []\TU/lmr/m/n/10 This should construct a tabular BLAST report with the columns
  []
@@ -1155,12 +1104,21 @@ Overfull \hbox (80.14453pt too wide) has occurred while \output is active
  []
 
 [32]
+
+[33]
+
+
+Overfull \hbox (80.14453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 34 \TU/lmr/m/sl/10 CHAPTER 5.  MODULE 2 EMERGING PATHOGEN DETECTION AND IDENTIFICATION
+ []
+
+[34
+
+]
 Chapter 6.
 
 
-[33
-
-]
+[35]
 Overfull \hbox (1.5pt too wide) in paragraph at lines 1045--1045
 []\TU/lmtt/m/n/10 prodigal -i USA300ref.fasta -t Staphylococcus_aureus.trn -p single[] 
  []
@@ -1177,7 +1135,7 @@ Overfull \hbox (164.25pt too wide) in paragraph at lines 1069--1069
 
 
 
-[34]
+[36]
 Overfull \hbox (369.0pt too wide) in paragraph at lines 1081--1081
 []\TU/lmtt/m/n/10 chewBBACA.py RemoveGenes -i wgMLST_50/results_alleles.tsv -g wgMLST_50/paralogous_counts.tsv -o wgMLST_50/results_alleles_NoParalogs.tsv[] 
  []
@@ -1189,7 +1147,7 @@ Overfull \hbox (127.5pt too wide) in paragraph at lines 1093--1093
 
 
 
-[35]
+[37]
 Overfull \hbox (395.25pt too wide) in paragraph at lines 1111--1111
 []\TU/lmtt/m/n/10 chewBBACA.py AlleleCall -i genomes/BVBRC-150 -g mrsa_schema/schema_seed --gl wgMLST_50/cgMLST/cgMLSTschema95.txt -o BVBRC-150_results --cpu 4[] 
  []
@@ -1201,7 +1159,7 @@ Overfull \hbox (174.75pt too wide) in paragraph at lines 1123--1123
 
 
 
-[36]
+[38]
 Overfull \hbox (180.0pt too wide) in paragraph at lines 1186--1186
 []\TU/lmtt/m/n/10 required_packages <- c("tidyverse", "data.table", "BiocManager", "plotly", "ggnewscale", "circlize",[] 
  []
@@ -1221,14 +1179,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[37]
+[39]
 Overfull \hbox (106.5pt too wide) in paragraph at lines 1195--1195
 []\TU/lmtt/m/n/10 aus_mrsa_cgMLST <- read.delim("BVBRC-150_results/cgMLST-150/cgMLST95.tsv", sep = "\t")[] 
  []
 
 
 
-[38]
+[40]
 Overfull \hbox (80.25pt too wide) in paragraph at lines 1263--1263
 []\TU/lmtt/m/n/10 # use hamming helper function to compute pairwise Hamming distance of cgMLST data[] 
  []
@@ -1250,7 +1208,7 @@ Overfull \hbox (90.75pt too wide) in paragraph at lines 1287--1287
 
 
 
-[39]
+[41]
 Overfull \hbox (75.0pt too wide) in paragraph at lines 1287--1287
 []\TU/lmtt/m/n/10 write.table(mrsa.dist_mat, file = "output/clusters/dist_mat_ordered_cgmlst.tsv",[] 
  []
@@ -1267,7 +1225,7 @@ Overfull \hbox (6.23003pt too wide) in paragraph at lines 1300--1301
 
 
 
-[40]
+[42]
 Overfull \hbox (27.75pt too wide) in paragraph at lines 1343--1343
 []\TU/lmtt/m/n/10 # Define genomic cluster membership at all possible distance thresholds[] 
  []
@@ -1294,7 +1252,7 @@ Overfull \hbox (27.75pt too wide) in paragraph at lines 1383--1383
 
 
 
-[41]
+[43]
 Overfull \hbox (80.25pt too wide) in paragraph at lines 1383--1383
 []\TU/lmtt/m/n/10 # Can either specify specific thresholds as a numeric vector i.e. c(0, 5, 10, 15)[] 
  []
@@ -1336,7 +1294,7 @@ Overfull \hbox (101.25pt too wide) in paragraph at lines 1383--1383
 
 
 
-[42]
+[44]
 Overfull \hbox (69.75pt too wide) in paragraph at lines 1427--1427
 []                                            \TU/lmtt/m/n/10 levels = rownames(mrsa.dist_mat)))][] 
  []
@@ -1363,7 +1321,7 @@ Overfull \hbox (38.25pt too wide) in paragraph at lines 1427--1427
 
 
 
-[43]
+[45]
 Overfull \hbox (390.0pt too wide) in paragraph at lines 1504--1504
 []\TU/lmtt/m/n/10 # also, write out the dendrogram to a Newick tree file, can be imported into ITOL or other tree visualization software for manual annotation[] 
  []
@@ -1390,7 +1348,7 @@ Overfull \hbox (69.75pt too wide) in paragraph at lines 1504--1504
 
 
 
-[44]
+[46]
 Overfull \hbox (80.25pt too wide) in paragraph at lines 1504--1504
 []  \TU/lmtt/m/n/10 guides(color = guide_legend(title = "MLST", override.aes = list(size = 3) ) ) +[] 
  []
@@ -1425,7 +1383,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[45]
+[47]
 Overfull \hbox (75.0pt too wide) in paragraph at lines 1607--1607
 []\TU/lmtt/m/n/10 target_threshold <- 25 # Editable variable,  currently set to a threshold of 25.[] 
  []
@@ -1437,7 +1395,7 @@ Overfull \hbox (33.0pt too wide) in paragraph at lines 1607--1607
 
 
 
-[46]
+[48]
 Overfull \hbox (101.25pt too wide) in paragraph at lines 1607--1607
 []\TU/lmtt/m/n/10 # plot core genome tree where colored blocks = clusters and text annotations = clades[] 
  []
@@ -1449,7 +1407,7 @@ Overfull \hbox (59.25pt too wide) in paragraph at lines 1607--1607
 
 
 
-[47]
+[49]
 Overfull \hbox (185.25pt too wide) in paragraph at lines 1615--1615
 []    \TU/lmtt/m/n/10 scale_colour_manual(name = "Host", values = c("#008080","#ffa500","#00ff00","#0000ff","#ff1493"))[] 
  []
@@ -1461,22 +1419,16 @@ Overfull \hbox (143.25pt too wide) in paragraph at lines 1633--1633
 
 
 
-[48]
+[50]
 Chapter 7.
 
-LaTeX Warning: Hyper reference `intro' on page 49 undefined on input line 1653.
+LaTeX Warning: Hyper reference `cluster' on page 51 undefined on input line 1657.
 
 
-LaTeX Warning: Hyper reference `setup' on page 49 undefined on input line 1655.
+LaTeX Warning: Hyper reference `snp' on page 51 undefined on input line 1659.
 
 
-LaTeX Warning: Hyper reference `cluster' on page 49 undefined on input line 1657.
-
-
-LaTeX Warning: Hyper reference `snp' on page 49 undefined on input line 1659.
-
-
-LaTeX Warning: Hyper reference `trans' on page 49 undefined on input line 1661.
+LaTeX Warning: Hyper reference `trans' on page 51 undefined on input line 1661.
 
 
 Underfull \hbox (badness 1033) in paragraph at lines 1667--1668
@@ -1490,15 +1442,11 @@ Underfull \hbox (badness 1184) in paragraph at lines 1667--1668
 
 
 
-[49
+[51
 
 ]
 Missing character: There is no β (U+03B2) in font [lmroman10-regular]:mapping=tex-text;!
 
-
-[50]
-
-[51]
 
 [52]
 
@@ -1507,6 +1455,10 @@ Missing character: There is no β (U+03B2) in font [lmroman10-regular]:mapping=t
 [54]
 
 [55]
+
+[56]
+
+[57]
 File: content-files/graphsnp_upload.jpg Graphic file (type bmp)
 <content-files/graphsnp_upload.jpg>
 
@@ -1514,7 +1466,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[56]
+[58]
 File: content-files/graphsnp_cluster.jpg Graphic file (type bmp)
 <content-files/graphsnp_cluster.jpg>
 
@@ -1522,7 +1474,7 @@ Underfull \vbox (badness 1117) has occurred while \output is active []
 
 
 
-[57]
+[59]
 File: content-files/microreact_upload.jpg Graphic file (type bmp)
 <content-files/microreact_upload.jpg>
 
@@ -1537,7 +1489,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[58]
+[60]
 File: content-files/microreact_upload3.jpg Graphic file (type bmp)
 <content-files/microreact_upload3.jpg>
 File: content-files/microreact_upload4.jpg Graphic file (type bmp)
@@ -1547,7 +1499,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[59]
+[61]
 Underfull \hbox (badness 3557) in paragraph at lines 1991--1992
 []\TU/lmr/m/n/10 A pre-computed distance matrix and phylogeny can be copied from
  []
@@ -1561,19 +1513,19 @@ File: content-files/graphsnp_upload.jpg Graphic file (type bmp)
 <content-files/graphsnp_upload.jpg>
 
 
-[60]
+[62]
 File: content-files/graphsnp_transmission.jpg Graphic file (type bmp)
 <content-files/graphsnp_transmission.jpg>
 
 
-[61]
+[63]
 
-[62]
+[64]
 Chapter 8.
 No file _main.bbl.
 
 
-[63
+[65
 
 ] (./_main.aux)
  ***********
@@ -1587,10 +1539,10 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  17829 strings out of 475964
  326461 string characters out of 5776972
- 866889 words of memory out of 5000000
+ 869106 words of memory out of 5000000
  40398 multiletter control sequences out of 15000+600000
  564857 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  90i,6n,123p,906b,483s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on _main.pdf (63 pages).
+Output written on _main.pdf (65 pages).
