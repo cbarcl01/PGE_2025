@@ -45,7 +45,7 @@ The workshop machines already have this software installed within a conda enviro
 
 ### 3. Exercise setup {#setup}
 
-### 3.1. Copy data files
+#### 3.1. Copy data files
 
 To begin, we will copy over the exercises to `~/workspace`. This let's use view the resulting output files in a web browser.
 
@@ -69,7 +69,7 @@ You should also have a directory like `data/` one directory up from here. To che
 analysis  data  precomputed-analysis
 ```
 
-### 3.2. Activate environment
+#### 3.2. Activate environment
 
 Next we will activate the [conda](https://docs.conda.io/en/latest/) environment, which will have all the tools needed by this tutorial pre-installed. To do this please run the following:
 
@@ -86,7 +86,7 @@ Kraken version 2.17.1
 Copyright 2013-2023, Derrick Wood (dwood@cs.jhu.edu)
 ```
 
-### 3.3. Verify your workshop machine URL
+#### 3.3. Verify your workshop machine URL
 
 This exercise will produce output files intended to be viewed in a web browser. These should be accessible by going to <http://xx.uhn-hpc.ca> in your web browser where **xx** is your particular number (like 01, 02, etc). If you are able to view a list of files and directories, try clicking the link for **module2_workspace**. This page will be referred to later to view some of our output files. In addition, the link **precompuated-analysis** will contain all the files we will generate during this lab.
 
@@ -94,7 +94,7 @@ This exercise will produce output files intended to be viewed in a web browser. 
 ### 4. Exercise {#exercise}
 
 
-### 4.1. Patient Background: {#exercise-background}
+#### 4.1. Patient Background: {#exercise-background}
 
 A 41-year-old man was admitted to a hospital 6 days after the onset of disease. He reported fever, chest tightness, unproductive cough, pain and weakness. Preliminary investigations excluded the presence of influenza virus, *Chlamydia pneumoniae*, *Mycoplasma pneumoniae*, and other common respiratory pathogens. After 3 days of treatment the patient was admitted to the intensive care unit, and 6 days following admission the patient was transferred to another hospital.
 
@@ -103,7 +103,7 @@ To further investigate the cause of illness, a sample of bronchoalveolar lavage 
 *Note: The patient information and data was derived from a real study (shown at the end of the lab).* 
 
 
-### 4.2. Overview {#exercise-overview}
+#### 4.2. Overview {#exercise-overview}
 
 We will proceed through the following steps to attempt to diagnose the situation.
 

@@ -17,7 +17,7 @@ author: Angela McLaughlin and Finlay Maguire
 modified: Nov 16 2025
 ---
 
-## Table of contents
+### Table of contents
 1. [Introduction](#intro)
 2. [Software](#software)    
 3. [Exercise setup](#setup)
@@ -26,18 +26,17 @@ modified: Nov 16 2025
 6. [Delphy Bayesian phylodynamic analysis](#delphy)
 7. [End of lab](#end)
 
-<a name="intro"></a>
 
-# 1. Introduction
+### 1. Introduction {#intro}
 
-## 1.1. Background
+#### 1.1. Background
 SARS-CoV-2 Pango lineage B.1.1.7 [(Rambaut et al. 2020)](https://www.nature.com/articles/s41564-020-0770-5) was the first officially designated variant of concern (VOC) by the World Health Organization [(Konings et al. 2021)](https://www.nature.com/articles/s41564-021-00932-w), due to its increased transmissibility compared to other circulating lineages. Although B.1.1.7 was discovered in December 2020, it originated in the months preceding that. For a more thorough investigation into the circumstances of B.1.1.7 discovery and emergence, see [(Hill et al., 2022)](https://academic.oup.com/ve/article/8/2/veac080/6677185) on "The origins and molecular evolution of SARS-CoV-2 lineage B.1.1.7 in the UK".
 
 Evaluating when and where (and in what host, for multi-host pathogens) novel lineages or variants with increased transmissibility or virulence emerge is important towards improving our understanding of the conditions supporting the emergence of variants against which pharmaceutical (vaccines, therapies) or non-pharmaceutical interventions may be less effective.
 
 In this tutorial, we will analyze early SARS-CoV-2 B.1.1.7 sequences and associated metadata from the first months following its detection to reconstruct its likely time and place of origin using phylodynamics and phylogeography, in both maximum likelihood and Bayesian statistical frameworks.
 
-## 1.2. Objectives of this analysis:
+#### 1.2. Objectives of this analysis:
 
 - Download and clean publicly available SARS-CoV-2 B.1.1.7 sequences 
 
@@ -55,7 +54,7 @@ In this tutorial, we will analyze early SARS-CoV-2 B.1.1.7 sequences and associa
 
 - Compare the maximum likelihood estimates to those obtained in a Bayesian framework using Delphy
 
-## 1.3. What statistical approach is best?
+#### 1.3. What statistical approach is best?
 
 Maximum likelihood and Bayesian approaches to phylodynamics and phylogeography differ in their  assumptions, algorithms, computational speed, scalability, and interpretation.
 
@@ -66,9 +65,9 @@ If you are interested in exploring more complex applications and methods for phy
 *Let's go.*
 
 
-<a name="software"></a>
 
-# 2. List of software for tutorial
+
+### 2. List of software for tutorial {#software}
 
 - [R package tidyverse][]
 - [R package Biostrings][]
@@ -81,15 +80,14 @@ If you are interested in exploring more complex applications and methods for phy
 - [Auspice][]
 - [Delphy][]
 
-<a name="setup"></a>
 
-# 3. Exercise setup
+### 3. Exercise setup {#setup}
 
-## 3.0. Data source
+#### 3.0. Data source
 
 We will not spend time downloading the data, but rather will copy the datafiles as described in the subsequent section. However, it's important to understand how this was done for the sake of reproducibility and interpretation. 
 
-### Filters applied to download this dataset
+#### Filters applied to download this dataset
 SARS-CoV-2 B.1.1.7 (Alpha variant) data from [NCBI Virus](https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/)
 
 - Pango lineage: B.1.1.7
@@ -108,7 +106,7 @@ SARS-CoV-2 B.1.1.7 (Alpha variant) data from [NCBI Virus](https://www.ncbi.nlm.n
 **Information to include when downloading metadata from NCBI:**
 ![ncbi_download](img/PGE_mod5/ncbi_down.png)
 
-## 3.1. Copy data files
+#### 3.1. Copy data files
 
 To begin, we will copy over the downloaded files to `~/workspace`.
 
@@ -140,7 +138,7 @@ grep -c "^>" data/download/b117_seq.fasta
 
 This should be 15790.
 
-## 3.2. Activate conda environment
+#### 3.2. Activate conda environment
 Next we will activate the [conda](https://docs.conda.io/en/latest/) environment, which will have all the tools needed by this tutorial pre-installed. 
 
 **Commands**
@@ -155,7 +153,7 @@ You should see the command-prompt (where you type commands) switch to include `(
 augur 32.0.0 
 ```
 
-## 3.3. Find your IP address to setup an AWS instance
+#### 3.3. Find your IP address to setup an AWS instance
 
 Similar to yesterday, we will want to either use the assigned hostname (e.g., xx.uhn-hpc.ca where xx is your instance number) or find the IP address of your machine on AWS so we can access some files from your machine on the web browser. To find your IP address you can run:
 
@@ -166,7 +164,7 @@ curl http://checkip.amazonaws.com
 
 This should print a number like XX.XX.XX.XX. Once you have your address, try going to <http://xx.uhn-hpc.ca> and clicking the link for **module5**. This page will be referred to later to view some of our output files. In addition, the link **precomputed-analysis** will contain all the files we will generate during this lab (phylogenetic trees, etc). 
 
-## 3.4. Inspect and clean data
+#### 3.4. Inspect and clean data
 
 The first step of any phylogenetic analysis is to inspect and clean the dataset. Initial cleaning (before even looking at the sequence quality) steps include checking that accessions and sequence names are complete and unique, checking the completeness of sampling dates and locations (especially in phylodynamic analyses where these play a central role), checking the range of dates are realistic, and looking at how many geographic categories there are and whether some are more well-represented than others. 
 
@@ -282,9 +280,9 @@ If you are in command line R, enter q() to get out.
 ::::
 
 
-<a name="phylodyn"></a>
 
-# 4. Maximum likelihood phylodynamic analysis
+
+### 4. Maximum likelihood phylodynamic analysis {#phylodyn}
 
 The overall goal of this lab is to estimate where and when B.1.1.7 most likely originated. To do this, we will mostly make use of the [Augur][] maximum likelihood tool suite, which powers the [NextStrain](https://nextstrain.org/) website. Within augur, the key tool actually being used for most of our inferences is [TreeTime][] a likelihood based tool for inferring molecular clocks and ancestral traits.
 
@@ -303,7 +301,7 @@ The steps/functions we use are in this section of the lab are the following:
 
 ---
 
-## 4.1. Construct a multiple sequence alignment of the genomes (`augur align`)
+#### 4.1. Construct a multiple sequence alignment of the genomes (`augur align`)
 
 The first step is to construct a multiple sequence alignment of the genomes, which is required before building a phylogenetic tree. We will be using the command `augur align` to accomplish this task, but underneath this [mafft][] runs to construct the alignment.
 
@@ -342,7 +340,7 @@ The reference sequence will be included in our alignment and `augur align` remov
 
 The aligned fasta file is a very similar format as the input file, but the difference is that sequences have been aligned (possibly by inserting gaps `-`). This also means that all sequences in `alignment.fasta` should have the same length (whereas sequences in `sequences.fasta`, which is not aligned, may have different lengths). When time allows, it is good practice to visually inspect the alignment in a viewer such as [AliView](https://github.com/AliView/AliView).
 
-## 4.2. Index sequences (`augur index`)
+#### 4.2. Index sequences (`augur index`)
 
 This step is optional but useful to inspect sequence quality and quicken the subsequent filtering step, by counting the frequency of nucleotides and gaps.
 
@@ -365,7 +363,7 @@ Inspect the index output in the 'aligned' subfolder.
 
 ::::
 
-## 4.3. Filter out low quality sequences (`augur filter`)
+#### 4.3. Filter out low quality sequences (`augur filter`)
 
 Filter seqs to a minimum length (--min-length) of 26913, which represents 90% of 29,903 sites with ACTG (i.e., max 10% ambig and gaps)
 
@@ -402,7 +400,7 @@ Nice, all the sequences passed our quality filters (this is rarer than you might
 
 ::::
 
-## 4.4. Mask problematic sites in the alignment
+#### 4.4. Mask problematic sites in the alignment
 
 Not all sites in the genome are equally informative towards inferring their phylogenetic relationships. Some sites can be misleading and should be masked before building trees. The ends of alignments often exhibit low coverage and a higher rate of sequencing or mapping errors. In SARS-CoV-2, this includes positions 1–55 and 29804–29903. Homoplasic sites at which multiple recurrent mutations arise may reflect contamination, recurrent sequencing errors, or hypermutability. Even if they are accurate, they may not be representative of evolution across the remainder of the genome. Another example (not relevant here) would be sites at which drug resistance mutations occur. In HIV-1 phylodynamic analyses, codons of surveillance drug resistance mutations are masked. For further interest, see this [justification for masking SARS-CoV-2 sequences](https://virological.org/t/masking-strategies-for-sars-cov-2-alignments/480).
 
@@ -433,11 +431,11 @@ Let's have a closer look at the parameters we used in the python script:
 - `-n`: the character to replace nucleotides at the masked sites
 - `--reference-id`: the ID of the reference sequence in the input
 
-### Optional
+#### Optional
 
 - Open and inspect the fasta files before and after masking.
 
-## 4.5. Build a maximum liklihood phylogenetic tree (`augur tree`)
+#### 4.5. Build a maximum liklihood phylogenetic tree (`augur tree`)
 
 The next step is to take the set of aligned genomes and build a phylogenetic tree (a divergence tree in units of substitutions per site). We will use `augur tree` for this, but underneath it (by default) runs [iqtree][], which uses maximum likelihood to infer a phylogenetic tree. 
 
@@ -506,7 +504,7 @@ As iqtree uses a maximum likelihood approach, you will see that it will report t
 
 *Note: For this lab we are not looking at branch support values for a tree, but for real-world analysis you may wish to look into including (ultra-fast) bootstrap support values or approximate likelihood ratio test values. This will give a measure of how well-supported each branch in the tree is by the alignment (often a number from 0 for little support to 100 for maximal support). Please see the [IQTree documentation](http://www.iqtree.org/doc/Tutorial#assessing-branch-supports-with-ultrafast-bootstrap-approximation) for more details.*
 
-## 4.6. Inferring timing of host change (`augur refine`)
+#### 4.6. Inferring timing of host change (`augur refine`)
 
 The tree output by [iqtree][] shows hypothetical evolutionary relationships between different SARS-CoV-2 genomes with branch lengths representing distances between different genomes (in units of **substitutions/site**, i.e., the predicted number of substitutions between genomes divided by the alignment length). However, other methods of measuring distance between genomes are possible. In particular we can incorporate the collection dates of the different SARS-CoV-2 genomes to infer a tree where branches are scaled according to the elapsed time and the dates of internal nodes are inferred. Such trees are called **time trees** or **time-scaled phylogenies**.
 
@@ -570,13 +568,13 @@ node attributes written to refine.node.json
 As output, the file `output-tree trees/b117_seq_complete_sampUK_aligned_filt_mask_timetree.tre` will contain the time tree while the file `trees/refine.node.json` contains additional information about the tree. If you want, download the time tree and view it in [icytree](https://icytree.org/). 
 
 
-### Optional
+##### Optional
 
 If you have spare time at the end of the lab, consider returning to conduct a sensitivity analysis on the specified clock rate and variance.
 
 ---
 
-## 4.7. Infer ancestral states for host and location (`augur traits`)
+#### 4.7. Infer ancestral states for host and location (`augur traits`)
 
 We will now be using treetime's `mugration` model to reconstruct discrete ancestral states. In other words, we are trying to use the tree and genome metadata to reconstruct the most likely country at each of the internal nodes in the tree. It is called a mugration model because it is fundamentally estimating migration between "demes" (in this case, countries) as if it were a substitution rate matrix, commonly referred to as *mu*. See [Lemey et al. 2009](https://pubmed.ncbi.nlm.nih.gov/19779555/) if you're interested in learning more. 
 
@@ -614,7 +612,7 @@ results written to trait.node.json
 
 ---
 
-## 4.8. Package up data for Auspice visualisation (`augur export`)
+#### 4.8. Package up data for Auspice visualisation (`augur export`)
 
 We will be using [Auspice][] to visualize the tree alongside our metadata. To do this, we need to package up all of the data we have so far into a special file which can be used by Auspice. To do this, please run the following command:
 
@@ -648,9 +646,9 @@ Validation of 'trees/analysis-package.json' succeeded.
 ---
 
 
-<a name="visualize-tree"></a>
 
-# 5. Visualizing the phylodynamic analysis
+
+### 5. Visualizing the phylodynamic analysis {#visualize-tree}
 
 Now that we've constructed and packaged up a tree (`analysis-package.json`), we can visualize this data alongside the data augur has extracted from our metadata using augur and [Auspice][].
 
@@ -658,7 +656,7 @@ Note: I've had issues recently getting this to work in firefox so recommend usin
 
 ---
 
-## 5.1. Load data into Auspice
+#### 5.1. Load data into Auspice
 
 To do this, please navigate to <http://IP-ADDRESS/module5/> and download the files `trees/analysis-package.json` and `data/masked/b117_seq_complete_sampUK_aligned_filt_mask.tsv` to your computer (if the link does not download you can **Right-click** and select **Save link as...**).
 
@@ -667,13 +665,13 @@ Next, navigate to <https://auspice.us/> and drag the file `analysis-package.json
 
 ---
 
-## 5.2. Explore data
+#### 5.2. Explore data
 
 Spend some time to explore the data and get used to the Auspice interface. Try switching between different **Tree Layouts**, **Branch Lengths**, or colouring the tree by different criteria in the metadata table. This is always worth doing a bit before diving into analyses. Scroll down and hit download to save the outputs of this for future reference. The nexus trees contain the internal node states along with the tree, so is readable into R and FigTree if you want to customize the tree more or analyze ancestral state transitions to identify sublineages or calculate dispersion rates etc.
 
 ---
 
-## 5.3. Examine the molecular clock 
+#### 5.3. Examine the molecular clock 
 
 Now we are going to look more at the Branch length "TIME" and "DIVERGENCE" option.
 
@@ -728,7 +726,7 @@ Now, have a look at the "CLOCK" layout/figure found in the options bar on the le
 
 ---
 
-## 5.4. Examine the ancestral state reconstruction
+#### 5.4. Examine the ancestral state reconstruction
 
 We can colour the tree and rename the tree tip labels using the metadata to reflect the ancestral state reconstruction. The internal nodes/branches will be coloured based on the inferred ancestral state, in this case Country or Geo_location. Investigate the ancestral states at internal nodes throughout the tree including at the root. Use the play button to visualize the dispersion globally.
 
@@ -757,9 +755,9 @@ We can colour the tree and rename the tree tip labels using the metadata to refl
 
 That's that for our maximum likelihood phylogeographic inference. Now, we're going to compare those results to a Bayesian approach.
 
-<a name="delphy"></a>
 
-# 6. Delphy analysis
+
+### 6. Delphy analysis {#delphy}
 
 [Delphy](https://delphy.fathom.info/) is a newly released Bayesian phylogenetics tool designed to be fast, scalable, accessible, and accurate. Delphy is faster than other Bayesian tools because it uses Explicit Mutation-Annotated Trees (EMAT), which are hypotheses of how an ancestral sequence replicated and evolved, mutation by mutation, into the observed dated sequences. Check out their [pre-print](https://www.biorxiv.org/content/10.1101/2025.03.25.645253v1.full.pdf) if you want more details.
 
@@ -767,7 +765,7 @@ In Bayesian phylogenetic (and phylodynamic) inference, many models (made up of t
 
 The tree displayed reflects a **maximum clade credibility** tree, which is a single tree with the highest posterior probability across the Bayesian posterior distribution of trees. Branch width represents the credibility threshold, more commonly referred to as **posterior support or probability**, which indicate the strength of evidence for clades, given the data and model used.
 
-## 6.1. Modify fasta names, then load the renamed fasta into Delphy
+#### 6.1. Modify fasta names, then load the renamed fasta into Delphy
 
 Delphy wants sequence names to include info separated by "|" not "/", so we'll start by running a simple R script to rename the relevant fasta and metadata. 
 
@@ -781,7 +779,7 @@ The renamed files output goes to a newly created folder, `data/delphy`.
 
 Now, open the [Delphy web browser](delphy.fathom.info) and drag/drop or upload the fasta file `data/delphyb117_seq_complete_sampUK_aligned_filt_mask_delphy.fasta`.
 
-## 6.2. Modify priors by clicking on advanced options
+#### 6.2. Modify priors by clicking on advanced options
 
 Leave the sampling frequency to sample 1 tree per 1,000,000 steps. You could change this to sample more frequently if you want, but this might not improve the speed of convergence if trees are too similar to each other. 
 
@@ -820,7 +818,7 @@ Before we start the run, go to Customize in the toolbar, then add the metadata f
 
 ::::
 
-## 6.3. Run the analysis and interpret output
+#### 6.3. Run the analysis and interpret output
 
 Hit play and watch in *statistical awe* as trees sampled from the posterior are displayed in real-time, alongside model parameters including the number of mutations, ln(posterior), total evolutionary time (tree height), and effective population size in years. We can start to investigate the output before the run is complete (or you can upload the precomputed-analysis/trees/delphy_out/.delphy file directly to the Delphy home page to analyze a more complete analysis of >300 million steps).
 
@@ -883,13 +881,13 @@ And now click on Mutations in the upper tool bar. Click on recurrent mutations, 
 
 ::::
 
-## 6.4. Export results 
+#### 6.4. Export results 
 
 To wrap this Delphy analysis up, go to Customize, then in the bottom left, export the Tree as png and Newick file, and the Delphy run. The Delphy run file can be dropped back into Delphy or read into R. You can also generate input/output to BEAST to run a more *bespoke* Bayesian analysis.
 
-<a name="end"></a>
 
-# 7. End of lab
+
+### 7. End of lab {#end}
 
 You've made it to the end of the lab. Awesome job.
 
