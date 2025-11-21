@@ -3,4 +3,8 @@
 
 ## Lecture
 
+<iframe src="https://docs.google.com/presentation/d/11MghMiN8TMiOfagUvzOqgyE8xbHlXB3P/preview" width="640" height="480" allow="autoplay"></iframe>  
+
 ## Lab
+
+<iframe src="https://docs.google.com/presentation/d/1_1Xqp5aaopBwsgyKpiXAG5wP192nUmPV/preview" width="640" height="480" allow="autoplay"></iframe>  

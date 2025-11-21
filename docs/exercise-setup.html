@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3. Exercise setup | IDE Module 5 Lab</title>
+  <meta name="description" content="Phylodynamics of SARS-CoV-2 B.1.1.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3. Exercise setup | IDE Module 5 Lab" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://bioinformaticsdotca.github.io/PGE_2025/img/bioinformatics_logo.png" />
+  <meta property="og:description" content="Phylodynamics of SARS-CoV-2 B.1.1.7" />
+  <meta name="github-repo" content="bioinformaticsdotca/PGE_2025" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3. Exercise setup | IDE Module 5 Lab" />
+  
+  <meta name="twitter:description" content="Phylodynamics of SARS-CoV-2 B.1.1.7" />
+  <meta name="twitter:image" content="https://bioinformaticsdotca.github.io/PGE_2025/img/bioinformatics_logo.png" />
+
+<meta name="author" content="Angela McLaughlin and Finlay Maguire" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="list-of-software-for-tutorial.html"/>
+<link rel="next" href="maximum-likelihood-phylodynamic-analysis.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "Pathogen Genomic Epidemiology",
+  "description": "The complete set of tutorials, slides, and practical exercises for the Pathogen Genomic Epidemiology 2025 Canadian Bioinformatics Workshop, hosted on GitHub Pages.",
+  "url": "https://bioinformaticsdotca.github.io/PGE_2025",
+  "learningResourceType": ["tutorial", "slides", "exercise"],
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "provider": {
+    "@type": "Organization",
+    "name": "Bioinformatics.ca",
+    "url": "https://bioinformatics.ca"
+  },
+  "keywords": "",
+  "isPartOf": {
+    "@type": "Course",
+    "@id": "https://bioinformatics.ca/workshops-all/2025-pathogen-genomic-epidemiology-online/"
+  }
+}
+</script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="https://bioinformaticsdotca.github.io/">
+ <img src="img/bioinformatics_logo.png" width="90%" alt="bioinformatics.ca logo" style="display:block; margin-left:auto; margin-right:auto; margin-top:15px;">
+ </a>
+<li><center><strong><a href="./"><br><br><br></a></strong></center></li>
+<a href="./">
+ <img src="img/pge-icon.png" width="70%" alt=" logo" style="display:block; margin-left:auto; margin-right:auto; ">
+ </a>
+<br>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Workshop Info</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pre-work"><i class="fa fa-check"></i>Pre-work</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#class-photo"><i class="fa fa-check"></i>Class Photo</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html"><i class="fa fa-check"></i>Meet Your Faculty</a></li>
+<li class="chapter" data-level="" data-path="data-and-compute-setup.html"><a href="data-and-compute-setup.html"><i class="fa fa-check"></i>Data and Compute Setup</a></li>
+<li class="chapter" data-level="" data-path="module-1-data-curation-and-data-sharing.html"><a href="module-1-data-curation-and-data-sharing.html"><i class="fa fa-check"></i>Module 1 Data Curation and Data Sharing</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-1-data-curation-and-data-sharing.html"><a href="module-1-data-curation-and-data-sharing.html#lecture"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-1-data-curation-and-data-sharing.html"><a href="module-1-data-curation-and-data-sharing.html#lab"><i class="fa fa-check"></i>Lab</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html"><i class="fa fa-check"></i>Module 2 Emerging Pathogen Detection and Identification</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#lecture-1"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#lab-1"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#intro"><i class="fa fa-check"></i>1. Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#software"><i class="fa fa-check"></i>2. List of software for tutorial and its respective documentation</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#setup"><i class="fa fa-check"></i>3. Exercise setup</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#copy-data-files"><i class="fa fa-check"></i>3.1. Copy data files</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#activate-environment"><i class="fa fa-check"></i>3.2. Activate environment</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#verify-your-workshop-machine-url"><i class="fa fa-check"></i>3.3. Verify your workshop machine URL</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#exercise"><i class="fa fa-check"></i>4. Exercise</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#exercise-background"><i class="fa fa-check"></i>4.1. Patient Background:</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#exercise-overview"><i class="fa fa-check"></i>4.2. Overview</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#assembly-free"><i class="fa fa-check"></i>Assembly-free approach</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#assembly-based"><i class="fa fa-check"></i>Assembly-based approach</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#final"><i class="fa fa-check"></i>5. Final words</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-3-pathogen-typing.html"><a href="module-3-pathogen-typing.html"><i class="fa fa-check"></i>Module 3 Pathogen Typing</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-3-pathogen-typing.html"><a href="module-3-pathogen-typing.html#lecture-2"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-3-pathogen-typing.html"><a href="module-3-pathogen-typing.html#lab-2"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-3-pathogen-typing.html"><a href="module-3-pathogen-typing.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-3-pathogen-typing.html"><a href="module-3-pathogen-typing.html#part-one-chewbbaca-objective"><i class="fa fa-check"></i>PART ONE: chewBBACA Objective</a></li>
+<li class="chapter" data-level="" data-path="module-3-pathogen-typing.html"><a href="module-3-pathogen-typing.html#part-two-cgmlst-clustering-objective"><i class="fa fa-check"></i>PART TWO: cgMLST clustering Objective</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html"><i class="fa fa-check"></i>Module 4 Outbreak Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html#lecture-3"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html#lab-3"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html#set-up"><i class="fa fa-check"></i>Set-Up</a></li>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html#cluster-identification"><i class="fa fa-check"></i>Cluster Identification</a></li>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html#snp-analysis"><i class="fa fa-check"></i>SNP Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-5-phylodynamics.html"><a href="module-5-phylodynamics.html"><i class="fa fa-check"></i>Module 5 Phylodynamics</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-5-phylodynamics.html"><a href="module-5-phylodynamics.html#lecture-4"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-5-phylodynamics.html"><a href="module-5-phylodynamics.html#lab-4"><i class="fa fa-check"></i>Lab</a></li>
+<li class="chapter" data-level="" data-path="module-5-phylodynamics.html"><a href="module-5-phylodynamics.html#table-of-contents"><i class="fa fa-check"></i>Table of contents</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i>1. Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-1.html"><a href="introduction-1.html#background-1"><i class="fa fa-check"></i>1.1. Background</a></li>
+<li class="chapter" data-level="" data-path="introduction-1.html"><a href="introduction-1.html#objectives-of-this-analysis"><i class="fa fa-check"></i>1.2. Objectives of this analysis:</a></li>
+<li class="chapter" data-level="" data-path="introduction-1.html"><a href="introduction-1.html#what-statistical-approach-is-best"><i class="fa fa-check"></i>1.3. What statistical approach is best?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="list-of-software-for-tutorial.html"><a href="list-of-software-for-tutorial.html"><i class="fa fa-check"></i>2. List of software for tutorial</a></li>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html"><i class="fa fa-check"></i>3. Exercise setup</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html#data-source"><i class="fa fa-check"></i>3.0. Data source</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html#filters-applied-to-download-this-dataset"><i class="fa fa-check"></i>Filters applied to download this dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html#copy-data-files-1"><i class="fa fa-check"></i>3.1. Copy data files</a></li>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html#activate-conda-environment"><i class="fa fa-check"></i>3.2. Activate conda environment</a></li>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html#find-your-ip-address-to-setup-an-aws-instance"><i class="fa fa-check"></i>3.3. Find your IP address to setup an AWS instance</a></li>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html#inspect-and-clean-data"><i class="fa fa-check"></i>3.4. Inspect and clean data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html"><i class="fa fa-check"></i>4. Maximum likelihood phylodynamic analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#construct-a-multiple-sequence-alignment-of-the-genomes-augur-align"><i class="fa fa-check"></i>4.1. Construct a multiple sequence alignment of the genomes (<code>augur align</code>)</a></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#index-sequences-augur-index"><i class="fa fa-check"></i>4.2. Index sequences (<code>augur index</code>)</a></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#filter-out-low-quality-sequences-augur-filter"><i class="fa fa-check"></i>4.3. Filter out low quality sequences (<code>augur filter</code>)</a></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#mask-problematic-sites-in-the-alignment"><i class="fa fa-check"></i>4.4. Mask problematic sites in the alignment</a>
+<ul>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#optional"><i class="fa fa-check"></i>Optional</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#build-a-maximum-liklihood-phylogenetic-tree-augur-tree"><i class="fa fa-check"></i>4.5. Build a maximum liklihood phylogenetic tree (<code>augur tree</code>)</a></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#inferring-timing-of-host-change-augur-refine"><i class="fa fa-check"></i>4.6. Inferring timing of host change (<code>augur refine</code>)</a>
+<ul>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#optional-1"><i class="fa fa-check"></i>Optional</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#infer-ancestral-states-for-host-and-location-augur-traits"><i class="fa fa-check"></i>4.7. Infer ancestral states for host and location (<code>augur traits</code>)</a></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#package-up-data-for-auspice-visualisation-augur-export"><i class="fa fa-check"></i>4.8. Package up data for Auspice visualisation (<code>augur export</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualizing-the-phylodynamic-analysis.html"><a href="visualizing-the-phylodynamic-analysis.html"><i class="fa fa-check"></i>5. Visualizing the phylodynamic analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualizing-the-phylodynamic-analysis.html"><a href="visualizing-the-phylodynamic-analysis.html#load-data-into-auspice"><i class="fa fa-check"></i>5.1. Load data into Auspice</a></li>
+<li class="chapter" data-level="" data-path="visualizing-the-phylodynamic-analysis.html"><a href="visualizing-the-phylodynamic-analysis.html#explore-data"><i class="fa fa-check"></i>5.2. Explore data</a></li>
+<li class="chapter" data-level="" data-path="visualizing-the-phylodynamic-analysis.html"><a href="visualizing-the-phylodynamic-analysis.html#examine-the-molecular-clock"><i class="fa fa-check"></i>5.3. Examine the molecular clock</a></li>
+<li class="chapter" data-level="" data-path="visualizing-the-phylodynamic-analysis.html"><a href="visualizing-the-phylodynamic-analysis.html#examine-the-ancestral-state-reconstruction"><i class="fa fa-check"></i>5.4. Examine the ancestral state reconstruction</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="delphy-analysis.html"><a href="delphy-analysis.html"><i class="fa fa-check"></i>6. Delphy analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="delphy-analysis.html"><a href="delphy-analysis.html#modify-fasta-names-then-load-the-renamed-fasta-into-delphy"><i class="fa fa-check"></i>6.1. Modify fasta names, then load the renamed fasta into Delphy</a></li>
+<li class="chapter" data-level="" data-path="delphy-analysis.html"><a href="delphy-analysis.html#modify-priors-by-clicking-on-advanced-options"><i class="fa fa-check"></i>6.2. Modify priors by clicking on advanced options</a></li>
+<li class="chapter" data-level="" data-path="delphy-analysis.html"><a href="delphy-analysis.html#run-the-analysis-and-interpret-output"><i class="fa fa-check"></i>6.3. Run the analysis and interpret output</a></li>
+<li class="chapter" data-level="" data-path="delphy-analysis.html"><a href="delphy-analysis.html#export-results"><i class="fa fa-check"></i>6.4. Export results</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="end-of-lab.html"><a href="end-of-lab.html"><i class="fa fa-check"></i>7. End of lab</a></li>
+<li class="divider"></li>
+<h1 id="sponsors">Sponsors</h1>
+<center>
+<a href="https://www.cihr-irsc.gc.ca"><img src="img/sponsors/cihr.png" width=90% style="padding-bottom: 20px" alt="Canadian Institutes of Health Research logo."></a>
+
+<a href="https://genomecanada.ca/"><img src="img/sponsors/genomecanada.png" height="55" style="display:inline-block;"  style="padding-bottom: 20px" alt="Genome Canada logo.">
+<a href="https://www.ontariogenomics.ca/"><img src="img/sponsors/ontariogenomics.png" height="55" style="display:inline-block;" style="padding-bottom: 20px;" alt="Ontario Genomics logo.">
+<br><br>
+<a href="https://oicr.on.ca/"><img src="img/sponsors/oicr.png" width=35% style="display:inline-block;" style="padding-bottom: 20px" alt="Ontario Institute for Cancer Research logo.">
+<br><br>
+<a href="https://uhn.ca/"><img src="img/sponsors/uhnlogo.png" width=55% style="display:inline-block;" style="padding-bottom: 20px" alt="University Health Network logo.">
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">IDE Module 5 Lab</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exercise-setup" class="section level1 hasAnchor">
+<h1>3. Exercise setup<a href="exercise-setup.html#exercise-setup" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="data-source" class="section level2 hasAnchor">
+<h2>3.0. Data source<a href="exercise-setup.html#data-source" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will not spend time downloading the data, but rather will copy the datafiles as described in the subsequent section. However, it’s important to understand how this was done for the sake of reproducibility and interpretation.</p>
+<div id="filters-applied-to-download-this-dataset" class="section level3 hasAnchor">
+<h3>Filters applied to download this dataset<a href="exercise-setup.html#filters-applied-to-download-this-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>SARS-CoV-2 B.1.1.7 (Alpha variant) data from <a href="https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/">NCBI Virus</a></p>
+<ul>
+<li>Pango lineage: B.1.1.7</li>
+<li>Host: human</li>
+<li>Dates:
+<ul>
+<li>Collection date: Sep 1 2020 to Jan 1 2021 (First few months of detection)</li>
+<li>Release date: Sep 1 2020 to Jan 1 2022 (allow one year delayed submission)</li>
+</ul></li>
+<li>Sequence Quality:
+<ul>
+<li>Nucleotide completeness: complete only</li>
+</ul></li>
+<li>Nucleotide &gt; Download all results</li>
+<li>Data type
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>sequence data = nucleotide; Fasta definition line: accession, country, collection date</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Results table in csv format; Results csv &gt; Accession with version number</li>
+</ol></li>
+</ul></li>
+<li>N=15790 fasta sequences (b117_seq.fasta) and metadata (b117_seq.csv)</li>
+</ul>
+<p><strong>Information to include when downloading metadata from NCBI:</strong>
+<img src="img/PGE_mod5/ncbi_down.png" alt="ncbi_download" /></p>
+</div>
+</div>
+<div id="copy-data-files-1" class="section level2 hasAnchor">
+<h2>3.1. Copy data files<a href="exercise-setup.html#copy-data-files-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To begin, we will copy over the downloaded files to <code>~/workspace</code>.</p>
+<p><strong>Commands</strong></p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="exercise-setup.html#cb67-1" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ~/CourseData/module5 ~/workspace/.</span>
+<span id="cb67-2"><a href="exercise-setup.html#cb67-2" tabindex="-1"></a><span class="bu">cd</span> ~/workspace/module5</span></code></pre></div>
+<p>When you are finished with these steps you should be inside the directory <code>/home/ubuntu/workspace/module5</code>. You can verify this by running the command <code>pwd</code>.</p>
+<p><strong>Output after running <code>pwd</code></strong></p>
+<pre><code>/home/ubuntu/workspace/module5</code></pre>
+<p>You should also see a directory <code>data/</code> in the current directory which contains all the input data. You can verify this by running <code>ls data/download</code>:</p>
+<p><strong>Output after running <code>ls data/download</code></strong></p>
+<pre><code>b117_seq.csv    b117_seq.fasta     reference_MN908947.3.fasta </code></pre>
+<p>It is also good to verify the data was copied fully. Run this code to count how many sequences are in the fasta file (each one starts with &gt;):
+<strong>Commands</strong></p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="exercise-setup.html#cb70-1" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">&quot;^&gt;&quot;</span> data/download/b117_seq.fasta </span></code></pre></div>
+<p>This should be 15790.</p>
+</div>
+<div id="activate-conda-environment" class="section level2 hasAnchor">
+<h2>3.2. Activate conda environment<a href="exercise-setup.html#activate-conda-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Next we will activate the <a href="https://docs.conda.io/en/latest/">conda</a> environment, which will have all the tools needed by this tutorial pre-installed.</p>
+<p><strong>Commands</strong></p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="exercise-setup.html#cb71-1" tabindex="-1"></a><span class="ex">conda</span> activate sc2b117_phylodyn</span></code></pre></div>
+<p>You should see the command-prompt (where you type commands) switch to include <code>(sc2b117_phylodyn)</code> at the beginning, showing you are inside this environment. You should also be able to run the <code>augur</code> command like <code>augur --version</code> and see output:</p>
+<p><strong>Output after running <code>augur --version</code></strong></p>
+<pre><code>augur 32.0.0 </code></pre>
+</div>
+<div id="find-your-ip-address-to-setup-an-aws-instance" class="section level2 hasAnchor">
+<h2>3.3. Find your IP address to setup an AWS instance<a href="exercise-setup.html#find-your-ip-address-to-setup-an-aws-instance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Similar to yesterday, we will want to either use the assigned hostname (e.g., xx.uhn-hpc.ca where xx is your instance number) or find the IP address of your machine on AWS so we can access some files from your machine on the web browser. To find your IP address you can run:</p>
+<p><strong>Commands</strong></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb73-1"><a href="exercise-setup.html#cb73-1" tabindex="-1"></a><span class="ex">curl</span> http://checkip.amazonaws.com</span></code></pre></div>
+<p>This should print a number like XX.XX.XX.XX. Once you have your address, try going to <a href="http://xx.uhn-hpc.ca" class="uri">http://xx.uhn-hpc.ca</a> and clicking the link for <strong>module5</strong>. This page will be referred to later to view some of our output files. In addition, the link <strong>precomputed-analysis</strong> will contain all the files we will generate during this lab (phylogenetic trees, etc).</p>
+</div>
+<div id="inspect-and-clean-data" class="section level2 hasAnchor">
+<h2>3.4. Inspect and clean data<a href="exercise-setup.html#inspect-and-clean-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The first step of any phylogenetic analysis is to inspect and clean the dataset. Initial cleaning (before even looking at the sequence quality) steps include checking that accessions and sequence names are complete and unique, checking the completeness of sampling dates and locations (especially in phylodynamic analyses where these play a central role), checking the range of dates are realistic, and looking at how many geographic categories there are and whether some are more well-represented than others.</p>
+<p>Run the following Rscript in the command line to de-duplicate seqeunces, remove incomplete dates, and subsample the data.</p>
+<p><strong>Commands</strong></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb74-1"><a href="exercise-setup.html#cb74-1" tabindex="-1"></a><span class="ex">Rscript</span> scripts/dedup_comp_dates.R <span class="st">&quot;data/download/b117_seq.csv&quot;</span> <span class="st">&quot;data/download/b117_seq.fasta&quot;</span></span></code></pre></div>
+<p>While this is running, let’s have a look inside the R script. Open the .Rproj file in RStudio, then open scripts/dedup_comp_dates.R. Note that while we have called this script from the command line, you can also run it within Rstudio by manually specifying the arguments.</p>
+<p>What is happening inside this script:</p>
+<ul>
+<li>De-duplicate identical sequences (taking earliest collection date of replicates)</li>
+<li>Rename sequences without any spaces and add sequence name to metadata</li>
+<li>Identify and remove incomplete collection date (yyyy or yyyy-mm)</li>
+<li>Create a smaller subsampled dataset ‘complete_sampUK’ with equal number of non-UK and UK samples
+<ul>
+<li><em>NOTE: this is the dataset that we will be working with in this lab due to limited time. In a more robust analysis, we would include more samples, repeat sampling with different seeds, and rather than sampling at random, we might consider sampling proportionally to geographies’ diagnosed cases through time to more accurately reflect spatiotemporal dynamics</em></li>
+</ul></li>
+<li>Export fasta and csv files into data/complete subfolder</li>
+</ul>
+<div type="orange" style="regular" title="Questions" collapsible="false" icon="true">
+<ul>
+<li>How many sequences were downloaded?</li>
+<li>How many sequences were there after de-duplicating?</li>
+<li>After de-duplicating, how many had complete dates? How many were sampled (sampUK)?</li>
+<li>How might you modify the subsampling scheme to reduce bias? to quantify uncertainty in the sampling process?</li>
+</ul>
+</div>
+<div type="green" style="regular" title="Answers" collapsible="true" icon="true">
+<ul>
+<li>n=15790</li>
+<li>n=14774</li>
+<li>n=10813; n=178</li>
+<li>Proportional to case counts through time and space. Multiple subsamples of different sizes or proportional contributions of countries.</li>
+</ul>
+</div>
+<p>Once that code is done, let’s run some R scripts from the command line to quickly summarize the number and/or proportion of sequences by country through time. Alternatively, in RStudio, go to file&gt;new file&gt;Rscript, copy/paste code chunk, save and run it there.</p>
+<p><strong>Commands</strong></p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb75-1"><a href="exercise-setup.html#cb75-1" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb75-2"><a href="exercise-setup.html#cb75-2" tabindex="-1"></a><span class="ex">R</span> </span>
+<span id="cb75-3"><a href="exercise-setup.html#cb75-3" tabindex="-1"></a></span>
+<span id="cb75-4"><a href="exercise-setup.html#cb75-4" tabindex="-1"></a><span class="ex">library</span><span class="er">(</span><span class="ex">tidyverse</span><span class="kw">)</span></span>
+<span id="cb75-5"><a href="exercise-setup.html#cb75-5" tabindex="-1"></a><span class="ex">library</span><span class="er">(</span><span class="ex">RColorBrewer</span><span class="kw">)</span></span>
+<span id="cb75-6"><a href="exercise-setup.html#cb75-6" tabindex="-1"></a></span>
+<span id="cb75-7"><a href="exercise-setup.html#cb75-7" tabindex="-1"></a><span class="co">#data in</span></span>
+<span id="cb75-8"><a href="exercise-setup.html#cb75-8" tabindex="-1"></a><span class="ex">dat.samp</span><span class="op">&lt;</span>-read.delim<span class="er">(</span><span class="st">&quot;data/complete/b117_seq_complete_sampUK.tsv&quot;</span><span class="kw">)</span></span>
+<span id="cb75-9"><a href="exercise-setup.html#cb75-9" tabindex="-1"></a><span class="ex">nrow</span><span class="er">(</span><span class="ex">dat.samp</span><span class="kw">)</span></span>
+<span id="cb75-10"><a href="exercise-setup.html#cb75-10" tabindex="-1"></a><span class="ex">dat.samp</span><span class="va">$date</span><span class="op">&lt;</span>-as.Date<span class="er">(</span><span class="ex">dat.samp</span><span class="va">$date</span><span class="kw">)</span></span>
+<span id="cb75-11"><a href="exercise-setup.html#cb75-11" tabindex="-1"></a></span>
+<span id="cb75-12"><a href="exercise-setup.html#cb75-12" tabindex="-1"></a><span class="co">#range of dates</span></span>
+<span id="cb75-13"><a href="exercise-setup.html#cb75-13" tabindex="-1"></a><span class="ex">range</span><span class="er">(</span><span class="ex">dat.samp</span><span class="va">$date</span><span class="kw">)</span></span>
+<span id="cb75-14"><a href="exercise-setup.html#cb75-14" tabindex="-1"></a></span>
+<span id="cb75-15"><a href="exercise-setup.html#cb75-15" tabindex="-1"></a><span class="co">#countries </span></span>
+<span id="cb75-16"><a href="exercise-setup.html#cb75-16" tabindex="-1"></a><span class="ex">t.c</span><span class="op">&lt;</span>-table<span class="er">(</span><span class="ex">dat.samp</span><span class="va">$Country</span><span class="kw">)</span> <span class="ex">%</span><span class="op">&gt;</span>% sort<span class="er">(</span><span class="ex">decreasing</span> = T<span class="kw">);</span><span class="ex">t.c</span></span>
+<span id="cb75-17"><a href="exercise-setup.html#cb75-17" tabindex="-1"></a><span class="ex">order.c</span><span class="op">&lt;</span>-names<span class="er">(</span><span class="ex">t.c</span><span class="kw">)</span> <span class="co">#order of countries w/ most to least seqs/samples</span></span>
+<span id="cb75-18"><a href="exercise-setup.html#cb75-18" tabindex="-1"></a><span class="ex">n.c</span><span class="op">&lt;</span>-length<span class="er">(</span><span class="ex">unique</span><span class="er">(</span><span class="ex">dat.samp</span><span class="va">$Country</span><span class="kw">));</span><span class="ex">n.c</span></span>
+<span id="cb75-19"><a href="exercise-setup.html#cb75-19" tabindex="-1"></a></span>
+<span id="cb75-20"><a href="exercise-setup.html#cb75-20" tabindex="-1"></a><span class="co">#more specific geos also available</span></span>
+<span id="cb75-21"><a href="exercise-setup.html#cb75-21" tabindex="-1"></a><span class="ex">table</span><span class="er">(</span><span class="ex">dat.samp</span><span class="va">$Geo_Location</span><span class="kw">)</span> <span class="ex">%</span><span class="op">&gt;</span>% sort<span class="er">(</span><span class="ex">decreasing</span> = T<span class="kw">)</span></span>
+<span id="cb75-22"><a href="exercise-setup.html#cb75-22" tabindex="-1"></a><span class="ex">length</span><span class="er">(</span><span class="ex">unique</span><span class="er">(</span><span class="ex">dat.samp</span><span class="va">$Geo_Location</span><span class="kw">))</span></span>
+<span id="cb75-23"><a href="exercise-setup.html#cb75-23" tabindex="-1"></a></span>
+<span id="cb75-24"><a href="exercise-setup.html#cb75-24" tabindex="-1"></a><span class="co">#setup colors for countries</span></span>
+<span id="cb75-25"><a href="exercise-setup.html#cb75-25" tabindex="-1"></a><span class="ex">country.cols</span><span class="op">&lt;</span>-colorRampPalette<span class="er">(</span><span class="ex">brewer.pal</span><span class="er">(</span><span class="va">n</span><span class="op">=</span>8,name=<span class="st">&quot;Dark2&quot;</span><span class="kw">))(</span><span class="ex">n.c</span><span class="kw">)</span></span>
+<span id="cb75-26"><a href="exercise-setup.html#cb75-26" tabindex="-1"></a><span class="ex">names</span><span class="er">(</span><span class="ex">country.cols</span><span class="kw">)</span><span class="op">&lt;</span>-order.c</span>
+<span id="cb75-27"><a href="exercise-setup.html#cb75-27" tabindex="-1"></a></span>
+<span id="cb75-28"><a href="exercise-setup.html#cb75-28" tabindex="-1"></a><span class="co">#factor and levels specifies order in legend</span></span>
+<span id="cb75-29"><a href="exercise-setup.html#cb75-29" tabindex="-1"></a><span class="ex">dat.samp</span><span class="va">$Country</span><span class="op">&lt;</span>-factor<span class="er">(</span><span class="ex">dat.samp</span><span class="va">$Country</span><span class="ex">,</span> levels=order.c<span class="kw">)</span></span>
+<span id="cb75-30"><a href="exercise-setup.html#cb75-30" tabindex="-1"></a></span>
+<span id="cb75-31"><a href="exercise-setup.html#cb75-31" tabindex="-1"></a><span class="co">#plot country contribs</span></span>
+<span id="cb75-32"><a href="exercise-setup.html#cb75-32" tabindex="-1"></a><span class="ex">ggplot</span><span class="er">(</span><span class="ex">dat.samp</span><span class="kw">)</span> <span class="ex">+</span></span>
+<span id="cb75-33"><a href="exercise-setup.html#cb75-33" tabindex="-1"></a>  <span class="ex">geom_bar</span><span class="er">(</span><span class="ex">aes</span><span class="er">(</span><span class="va">x</span><span class="op">=</span>Country, <span class="va">fill</span><span class="op">=</span>Country<span class="kw">))</span><span class="ex">+</span></span>
+<span id="cb75-34"><a href="exercise-setup.html#cb75-34" tabindex="-1"></a>  <span class="fu">theme_bw()</span><span class="ex">+</span></span>
+<span id="cb75-35"><a href="exercise-setup.html#cb75-35" tabindex="-1"></a>  <span class="ex">labs</span><span class="er">(</span><span class="va">x</span><span class="op">=</span><span class="st">&quot;Country&quot;</span>, <span class="va">y</span><span class="op">=</span><span class="st">&quot;N sample&quot;</span>, <span class="va">fill</span><span class="op">=</span><span class="st">&quot;Country&quot;</span><span class="kw">)</span><span class="ex">+</span></span>
+<span id="cb75-36"><a href="exercise-setup.html#cb75-36" tabindex="-1"></a>  <span class="ex">scale_fill_manual</span><span class="er">(</span><span class="va">values</span><span class="op">=</span>country.cols<span class="kw">)</span><span class="ex">+</span></span>
+<span id="cb75-37"><a href="exercise-setup.html#cb75-37" tabindex="-1"></a>  <span class="ex">theme</span><span class="er">(</span><span class="ex">axis.text.x=element_text</span><span class="er">(</span><span class="va">angle</span><span class="op">=</span>45,vjust=1,hjust=1<span class="kw">)</span><span class="ex">,</span></span>
+<span id="cb75-38"><a href="exercise-setup.html#cb75-38" tabindex="-1"></a>        <span class="ex">legend.position=</span><span class="st">&quot;none&quot;</span><span class="kw">)</span></span>
+<span id="cb75-39"><a href="exercise-setup.html#cb75-39" tabindex="-1"></a><span class="ex">ggsave</span><span class="er">(</span><span class="ex">paste0</span><span class="er">(</span><span class="st">&quot;data/complete/samples_country.png&quot;</span><span class="kw">))</span></span>
+<span id="cb75-40"><a href="exercise-setup.html#cb75-40" tabindex="-1"></a></span>
+<span id="cb75-41"><a href="exercise-setup.html#cb75-41" tabindex="-1"></a><span class="co">#plot it over time</span></span>
+<span id="cb75-42"><a href="exercise-setup.html#cb75-42" tabindex="-1"></a><span class="ex">ggplot</span><span class="er">(</span><span class="ex">dat.samp</span><span class="kw">)</span> <span class="ex">+</span></span>
+<span id="cb75-43"><a href="exercise-setup.html#cb75-43" tabindex="-1"></a>  <span class="ex">geom_bar</span><span class="er">(</span><span class="ex">aes</span><span class="er">(</span><span class="va">x</span><span class="op">=</span>date, <span class="va">fill</span><span class="op">=</span>Country<span class="kw">))</span><span class="ex">+</span></span>
+<span id="cb75-44"><a href="exercise-setup.html#cb75-44" tabindex="-1"></a>  <span class="fu">theme_bw()</span><span class="ex">+</span></span>
+<span id="cb75-45"><a href="exercise-setup.html#cb75-45" tabindex="-1"></a>  <span class="ex">labs</span><span class="er">(</span><span class="va">x</span><span class="op">=</span><span class="st">&quot;Sample collection date&quot;</span>, <span class="va">y</span><span class="op">=</span><span class="st">&quot;N sample&quot;</span>, <span class="va">fill</span><span class="op">=</span><span class="st">&quot;Country&quot;</span><span class="kw">)</span><span class="ex">+</span></span>
+<span id="cb75-46"><a href="exercise-setup.html#cb75-46" tabindex="-1"></a>  <span class="ex">scale_fill_manual</span><span class="er">(</span><span class="va">values</span><span class="op">=</span>country.cols<span class="kw">)</span></span>
+<span id="cb75-47"><a href="exercise-setup.html#cb75-47" tabindex="-1"></a>  </span>
+<span id="cb75-48"><a href="exercise-setup.html#cb75-48" tabindex="-1"></a><span class="co">#save it</span></span>
+<span id="cb75-49"><a href="exercise-setup.html#cb75-49" tabindex="-1"></a><span class="ex">ggsave</span><span class="er">(</span><span class="ex">paste0</span><span class="er">(</span><span class="st">&quot;data/complete/samples_time_country.png&quot;</span><span class="kw">))</span></span></code></pre></div>
+<p>If you are in command line R, enter q() to get out.</p>
+<div type="orange" style="regular" title="Questions" collapsible="false" icon="true">
+<ul>
+<li>How many sequences were included from the UK?</li>
+<li>What is the range of sample collection dates in the final dataset?</li>
+<li>How many countries were represented in the final dataset?</li>
+</ul>
+</div>
+<div type="green" style="regular" title="Answers" collapsible="true" icon="true">
+<ul>
+<li>89</li>
+<li>2020-09-20 to 2021-01-01</li>
+<li>17 countries</li>
+</ul>
+</div>
+<p><a name="phylodyn"></a></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="list-of-software-for-tutorial.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="maximum-likelihood-phylodynamic-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/bioinformaticsdotca//blob/main/050-module-5.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

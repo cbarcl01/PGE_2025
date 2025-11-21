@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6. Delphy analysis | IDE Module 5 Lab</title>
+  <meta name="description" content="Phylodynamics of SARS-CoV-2 B.1.1.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6. Delphy analysis | IDE Module 5 Lab" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://bioinformaticsdotca.github.io/PGE_2025/img/bioinformatics_logo.png" />
+  <meta property="og:description" content="Phylodynamics of SARS-CoV-2 B.1.1.7" />
+  <meta name="github-repo" content="bioinformaticsdotca/PGE_2025" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6. Delphy analysis | IDE Module 5 Lab" />
+  
+  <meta name="twitter:description" content="Phylodynamics of SARS-CoV-2 B.1.1.7" />
+  <meta name="twitter:image" content="https://bioinformaticsdotca.github.io/PGE_2025/img/bioinformatics_logo.png" />
+
+<meta name="author" content="Angela McLaughlin and Finlay Maguire" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="visualizing-the-phylodynamic-analysis.html"/>
+<link rel="next" href="end-of-lab.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "Pathogen Genomic Epidemiology",
+  "description": "The complete set of tutorials, slides, and practical exercises for the Pathogen Genomic Epidemiology 2025 Canadian Bioinformatics Workshop, hosted on GitHub Pages.",
+  "url": "https://bioinformaticsdotca.github.io/PGE_2025",
+  "learningResourceType": ["tutorial", "slides", "exercise"],
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "provider": {
+    "@type": "Organization",
+    "name": "Bioinformatics.ca",
+    "url": "https://bioinformatics.ca"
+  },
+  "keywords": "",
+  "isPartOf": {
+    "@type": "Course",
+    "@id": "https://bioinformatics.ca/workshops-all/2025-pathogen-genomic-epidemiology-online/"
+  }
+}
+</script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="https://bioinformaticsdotca.github.io/">
+ <img src="img/bioinformatics_logo.png" width="90%" alt="bioinformatics.ca logo" style="display:block; margin-left:auto; margin-right:auto; margin-top:15px;">
+ </a>
+<li><center><strong><a href="./"><br><br><br></a></strong></center></li>
+<a href="./">
+ <img src="img/pge-icon.png" width="70%" alt=" logo" style="display:block; margin-left:auto; margin-right:auto; ">
+ </a>
+<br>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Workshop Info</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pre-work"><i class="fa fa-check"></i>Pre-work</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#class-photo"><i class="fa fa-check"></i>Class Photo</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html"><i class="fa fa-check"></i>Meet Your Faculty</a></li>
+<li class="chapter" data-level="" data-path="data-and-compute-setup.html"><a href="data-and-compute-setup.html"><i class="fa fa-check"></i>Data and Compute Setup</a></li>
+<li class="chapter" data-level="" data-path="module-1-data-curation-and-data-sharing.html"><a href="module-1-data-curation-and-data-sharing.html"><i class="fa fa-check"></i>Module 1 Data Curation and Data Sharing</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-1-data-curation-and-data-sharing.html"><a href="module-1-data-curation-and-data-sharing.html#lecture"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-1-data-curation-and-data-sharing.html"><a href="module-1-data-curation-and-data-sharing.html#lab"><i class="fa fa-check"></i>Lab</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html"><i class="fa fa-check"></i>Module 2 Emerging Pathogen Detection and Identification</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#lecture-1"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#lab-1"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#intro"><i class="fa fa-check"></i>1. Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#software"><i class="fa fa-check"></i>2. List of software for tutorial and its respective documentation</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#setup"><i class="fa fa-check"></i>3. Exercise setup</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#copy-data-files"><i class="fa fa-check"></i>3.1. Copy data files</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#activate-environment"><i class="fa fa-check"></i>3.2. Activate environment</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#verify-your-workshop-machine-url"><i class="fa fa-check"></i>3.3. Verify your workshop machine URL</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#exercise"><i class="fa fa-check"></i>4. Exercise</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#exercise-background"><i class="fa fa-check"></i>4.1. Patient Background:</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#exercise-overview"><i class="fa fa-check"></i>4.2. Overview</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#assembly-free"><i class="fa fa-check"></i>Assembly-free approach</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#assembly-based"><i class="fa fa-check"></i>Assembly-based approach</a></li>
+<li class="chapter" data-level="" data-path="module-2-emerging-pathogen-detection-and-identification.html"><a href="module-2-emerging-pathogen-detection-and-identification.html#final"><i class="fa fa-check"></i>5. Final words</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-3-pathogen-typing.html"><a href="module-3-pathogen-typing.html"><i class="fa fa-check"></i>Module 3 Pathogen Typing</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-3-pathogen-typing.html"><a href="module-3-pathogen-typing.html#lecture-2"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-3-pathogen-typing.html"><a href="module-3-pathogen-typing.html#lab-2"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-3-pathogen-typing.html"><a href="module-3-pathogen-typing.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-3-pathogen-typing.html"><a href="module-3-pathogen-typing.html#part-one-chewbbaca-objective"><i class="fa fa-check"></i>PART ONE: chewBBACA Objective</a></li>
+<li class="chapter" data-level="" data-path="module-3-pathogen-typing.html"><a href="module-3-pathogen-typing.html#part-two-cgmlst-clustering-objective"><i class="fa fa-check"></i>PART TWO: cgMLST clustering Objective</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html"><i class="fa fa-check"></i>Module 4 Outbreak Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html#lecture-3"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html#lab-3"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html#set-up"><i class="fa fa-check"></i>Set-Up</a></li>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html#cluster-identification"><i class="fa fa-check"></i>Cluster Identification</a></li>
+<li class="chapter" data-level="" data-path="module-4-outbreak-analysis.html"><a href="module-4-outbreak-analysis.html#snp-analysis"><i class="fa fa-check"></i>SNP Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-5-phylodynamics.html"><a href="module-5-phylodynamics.html"><i class="fa fa-check"></i>Module 5 Phylodynamics</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-5-phylodynamics.html"><a href="module-5-phylodynamics.html#lecture-4"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-5-phylodynamics.html"><a href="module-5-phylodynamics.html#lab-4"><i class="fa fa-check"></i>Lab</a></li>
+<li class="chapter" data-level="" data-path="module-5-phylodynamics.html"><a href="module-5-phylodynamics.html#table-of-contents"><i class="fa fa-check"></i>Table of contents</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i>1. Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-1.html"><a href="introduction-1.html#background-1"><i class="fa fa-check"></i>1.1. Background</a></li>
+<li class="chapter" data-level="" data-path="introduction-1.html"><a href="introduction-1.html#objectives-of-this-analysis"><i class="fa fa-check"></i>1.2. Objectives of this analysis:</a></li>
+<li class="chapter" data-level="" data-path="introduction-1.html"><a href="introduction-1.html#what-statistical-approach-is-best"><i class="fa fa-check"></i>1.3. What statistical approach is best?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="list-of-software-for-tutorial.html"><a href="list-of-software-for-tutorial.html"><i class="fa fa-check"></i>2. List of software for tutorial</a></li>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html"><i class="fa fa-check"></i>3. Exercise setup</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html#data-source"><i class="fa fa-check"></i>3.0. Data source</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html#filters-applied-to-download-this-dataset"><i class="fa fa-check"></i>Filters applied to download this dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html#copy-data-files-1"><i class="fa fa-check"></i>3.1. Copy data files</a></li>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html#activate-conda-environment"><i class="fa fa-check"></i>3.2. Activate conda environment</a></li>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html#find-your-ip-address-to-setup-an-aws-instance"><i class="fa fa-check"></i>3.3. Find your IP address to setup an AWS instance</a></li>
+<li class="chapter" data-level="" data-path="exercise-setup.html"><a href="exercise-setup.html#inspect-and-clean-data"><i class="fa fa-check"></i>3.4. Inspect and clean data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html"><i class="fa fa-check"></i>4. Maximum likelihood phylodynamic analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#construct-a-multiple-sequence-alignment-of-the-genomes-augur-align"><i class="fa fa-check"></i>4.1. Construct a multiple sequence alignment of the genomes (<code>augur align</code>)</a></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#index-sequences-augur-index"><i class="fa fa-check"></i>4.2. Index sequences (<code>augur index</code>)</a></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#filter-out-low-quality-sequences-augur-filter"><i class="fa fa-check"></i>4.3. Filter out low quality sequences (<code>augur filter</code>)</a></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#mask-problematic-sites-in-the-alignment"><i class="fa fa-check"></i>4.4. Mask problematic sites in the alignment</a>
+<ul>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#optional"><i class="fa fa-check"></i>Optional</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#build-a-maximum-liklihood-phylogenetic-tree-augur-tree"><i class="fa fa-check"></i>4.5. Build a maximum liklihood phylogenetic tree (<code>augur tree</code>)</a></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#inferring-timing-of-host-change-augur-refine"><i class="fa fa-check"></i>4.6. Inferring timing of host change (<code>augur refine</code>)</a>
+<ul>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#optional-1"><i class="fa fa-check"></i>Optional</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#infer-ancestral-states-for-host-and-location-augur-traits"><i class="fa fa-check"></i>4.7. Infer ancestral states for host and location (<code>augur traits</code>)</a></li>
+<li class="chapter" data-level="" data-path="maximum-likelihood-phylodynamic-analysis.html"><a href="maximum-likelihood-phylodynamic-analysis.html#package-up-data-for-auspice-visualisation-augur-export"><i class="fa fa-check"></i>4.8. Package up data for Auspice visualisation (<code>augur export</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualizing-the-phylodynamic-analysis.html"><a href="visualizing-the-phylodynamic-analysis.html"><i class="fa fa-check"></i>5. Visualizing the phylodynamic analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualizing-the-phylodynamic-analysis.html"><a href="visualizing-the-phylodynamic-analysis.html#load-data-into-auspice"><i class="fa fa-check"></i>5.1. Load data into Auspice</a></li>
+<li class="chapter" data-level="" data-path="visualizing-the-phylodynamic-analysis.html"><a href="visualizing-the-phylodynamic-analysis.html#explore-data"><i class="fa fa-check"></i>5.2. Explore data</a></li>
+<li class="chapter" data-level="" data-path="visualizing-the-phylodynamic-analysis.html"><a href="visualizing-the-phylodynamic-analysis.html#examine-the-molecular-clock"><i class="fa fa-check"></i>5.3. Examine the molecular clock</a></li>
+<li class="chapter" data-level="" data-path="visualizing-the-phylodynamic-analysis.html"><a href="visualizing-the-phylodynamic-analysis.html#examine-the-ancestral-state-reconstruction"><i class="fa fa-check"></i>5.4. Examine the ancestral state reconstruction</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="delphy-analysis.html"><a href="delphy-analysis.html"><i class="fa fa-check"></i>6. Delphy analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="delphy-analysis.html"><a href="delphy-analysis.html#modify-fasta-names-then-load-the-renamed-fasta-into-delphy"><i class="fa fa-check"></i>6.1. Modify fasta names, then load the renamed fasta into Delphy</a></li>
+<li class="chapter" data-level="" data-path="delphy-analysis.html"><a href="delphy-analysis.html#modify-priors-by-clicking-on-advanced-options"><i class="fa fa-check"></i>6.2. Modify priors by clicking on advanced options</a></li>
+<li class="chapter" data-level="" data-path="delphy-analysis.html"><a href="delphy-analysis.html#run-the-analysis-and-interpret-output"><i class="fa fa-check"></i>6.3. Run the analysis and interpret output</a></li>
+<li class="chapter" data-level="" data-path="delphy-analysis.html"><a href="delphy-analysis.html#export-results"><i class="fa fa-check"></i>6.4. Export results</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="end-of-lab.html"><a href="end-of-lab.html"><i class="fa fa-check"></i>7. End of lab</a></li>
+<li class="divider"></li>
+<h1 id="sponsors">Sponsors</h1>
+<center>
+<a href="https://www.cihr-irsc.gc.ca"><img src="img/sponsors/cihr.png" width=90% style="padding-bottom: 20px" alt="Canadian Institutes of Health Research logo."></a>
+
+<a href="https://genomecanada.ca/"><img src="img/sponsors/genomecanada.png" height="55" style="display:inline-block;"  style="padding-bottom: 20px" alt="Genome Canada logo.">
+<a href="https://www.ontariogenomics.ca/"><img src="img/sponsors/ontariogenomics.png" height="55" style="display:inline-block;" style="padding-bottom: 20px;" alt="Ontario Genomics logo.">
+<br><br>
+<a href="https://oicr.on.ca/"><img src="img/sponsors/oicr.png" width=35% style="display:inline-block;" style="padding-bottom: 20px" alt="Ontario Institute for Cancer Research logo.">
+<br><br>
+<a href="https://uhn.ca/"><img src="img/sponsors/uhnlogo.png" width=55% style="display:inline-block;" style="padding-bottom: 20px" alt="University Health Network logo.">
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">IDE Module 5 Lab</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="delphy-analysis" class="section level1 hasAnchor">
+<h1>6. Delphy analysis<a href="delphy-analysis.html#delphy-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><a href="https://delphy.fathom.info/">Delphy</a> is a newly released Bayesian phylogenetics tool designed to be fast, scalable, accessible, and accurate. Delphy is faster than other Bayesian tools because it uses Explicit Mutation-Annotated Trees (EMAT), which are hypotheses of how an ancestral sequence replicated and evolved, mutation by mutation, into the observed dated sequences. Check out their <a href="https://www.biorxiv.org/content/10.1101/2025.03.25.645253v1.full.pdf">pre-print</a> if you want more details.</p>
+<p>In Bayesian phylogenetic (and phylodynamic) inference, many models (made up of trees and parameters) are sampled to generate posterior probability distributions, and our estimates will reflect the <strong>highest posterior density (HPD)</strong>. Bayesian analyses differ from max likelihood approaches in that they incorporate uncertainty from the tree inference and sampling process, and rely on specification of prior probabilities for the parameters to be explored using <strong>Markov Chain Monte Carlo (MCMC)</strong>, which is basically a hill-climbing algorithm that suggests and compares models compared to the previous step. Model convergence is assessed using minimum <a href="https://github.com/fathominfo/delphy-web/wiki/Effective-Sample-Size"><strong>effective sampling size (ESS)</strong></a> reflects and in robust analyses is usually ~200 after removing the burn-in. Burn-in are steps that you don’t include in the final posterior distributions because they represent the model stabilization period. In a robust Bayesian analyses, multiple <strong>MCMC chains</strong> are run, and then combined after burn-in.</p>
+<p>The tree displayed reflects a <strong>maximum clade credibility</strong> tree, which is a single tree with the highest posterior probability across the Bayesian posterior distribution of trees. Branch width represents the credibility threshold, more commonly referred to as <strong>posterior support or probability</strong>, which indicate the strength of evidence for clades, given the data and model used.</p>
+<div id="modify-fasta-names-then-load-the-renamed-fasta-into-delphy" class="section level2 hasAnchor">
+<h2>6.1. Modify fasta names, then load the renamed fasta into Delphy<a href="delphy-analysis.html#modify-fasta-names-then-load-the-renamed-fasta-into-delphy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Delphy wants sequence names to include info separated by “|” not “/”, so we’ll start by running a simple R script to rename the relevant fasta and metadata.</p>
+<p>Run this Rscript in the command line. You can go to scripts/convert_names.R to have a look at what this script does, but it’s pretty simple.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb92-1"><a href="delphy-analysis.html#cb92-1" tabindex="-1"></a><span class="ex">Rscript</span> scripts/convert_names.R <span class="st">&quot;data/masked/b117_seq_complete_sampUK_aligned_filt_mask.tsv&quot;</span> <span class="st">&quot;data/masked/b117_seq_complete_sampUK_aligned_filt_mask.fasta&quot;</span></span></code></pre></div>
+<p>The renamed files output goes to a newly created folder, <code>data/delphy</code>.</p>
+<p>Now, open the <a href="delphy.fathom.info">Delphy web browser</a> and drag/drop or upload the fasta file <code>data/delphyb117_seq_complete_sampUK_aligned_filt_mask_delphy.fasta</code>.</p>
+</div>
+<div id="modify-priors-by-clicking-on-advanced-options" class="section level2 hasAnchor">
+<h2>6.2. Modify priors by clicking on advanced options<a href="delphy-analysis.html#modify-priors-by-clicking-on-advanced-options" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Leave the sampling frequency to sample 1 tree per 1,000,000 steps. You could change this to sample more frequently if you want, but this might not improve the speed of convergence if trees are too similar to each other.</p>
+<p>Let’s modify the priors. It is important to assess and modify priors in Bayesian analyses to reflect your <em>prior</em> expectations and narrow the parameter space explored. Improper priors not only slow down convergence, but can bias analyses.</p>
+<ul>
+<li>For mutation rate:
+<ul>
+<li>enable site rate heterogeneity</li>
+<li>fix overall (mean) mutation rate</li>
+<li>set initial mutation rate to 45e-5 s/s/y 4.5e-4 (Hill et al. 2022)</li>
+</ul></li>
+<li>Population model
+<ul>
+<li>Choose skygrid (these are both coalescent tree priors. Delphy does not have birth-death models like BEAST does.)</li>
+<li>model start date 2020-01-01 (the earliest this lineage root could have occurred)</li>
+<li>split into 10 intervals</li>
+<li>keep other parameters the same (could play with advanced skygrid parameters)
+<ul>
+<li><a href="https://github.com/broadinstitute/delphy/wiki/Flexible-population-models">Further reading on the choice of population model</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>Here is a look at the advanced options you should be modifying. This should also have had split into 10 intervals.</strong>
+<img src="img/PGE_mod5/delphy_prior.png" alt="delphy priors" /></p>
+<p>Before we start the run, go to Customize in the toolbar, then add the metadata file <code>data/delphyb117_seq_complete_sampUK_aligned_filt_mask_delphy.tsv</code> by drag/drop then in Color system, click metadata, color by Country, then select all.</p>
+<p><strong>Delphy customize options:</strong>
+<img src="img/PGE_mod5/delphy_cust.png" alt="delphy add metadata" /></p>
+<div type="orange" style="regular" title="Questions" collapsible="false" icon="true">
+<ul>
+<li>what biases may we have imposed through our selection of priors?</li>
+</ul>
+</div>
+<div type="green" style="regular" title="Answers" collapsible="true" icon="true">
+<ul>
+<li>We may bias our estimates of the root date by specifying an improper mean molecular clock rate. The skygrid may not fit well with 10 categories (not enough data in early period). The underlying population may be better described by the exponential population distribution. Any misspecified or over-generalized prior has the potential to bias the analysis or underestimate the true uncertainty in the estimates.</li>
+</ul>
+</div>
+</div>
+<div id="run-the-analysis-and-interpret-output" class="section level2 hasAnchor">
+<h2>6.3. Run the analysis and interpret output<a href="delphy-analysis.html#run-the-analysis-and-interpret-output" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Hit play and watch in <em>statistical awe</em> as trees sampled from the posterior are displayed in real-time, alongside model parameters including the number of mutations, ln(posterior), total evolutionary time (tree height), and effective population size in years. We can start to investigate the output before the run is complete (or you can upload the precomputed-analysis/trees/delphy_out/.delphy file directly to the Delphy home page to analyze a more complete analysis of &gt;300 million steps).</p>
+<p><strong>Here is a look at the more complete run, including a sampled tree, the MCC tree, and the posterior distribution of some key model parameters.</strong>
+<img src="img/PGE_mod5/delphy_mcc.png" alt="delphy mcc" /></p>
+<p>Although Delphy does not seem very good at estimating the ESS and assessing convergence, a good sign of convergence is when the posterior distributions of parameters appear as “fuzzy caterpillars” (converging around similar values, as opposed to jumping around).</p>
+<div type="orange" style="regular" title="Questions" collapsible="false" icon="true">
+<ul>
+<li><p>How do you interpret the change in effective population size through time?</p></li>
+<li><p>Did your model converge? How can you tell?</p></li>
+</ul>
+</div>
+<div type="green" style="regular" title="Answers" collapsible="true" icon="true">
+<ul>
+<li><p>The effective population size is low and then increases rapidly (exponentially?) as this lineage transmitted broadly in the UK and globally, but then appears to decrease at the end of the study perio, but this likely reflects lower sampling rate towards the end of the period.</p></li>
+<li><p>After removing burn-in, the ESS for the parameters shown are below 200, so probably not. We would have to run this for more steps, and maybe for multiple chains that we could combine using a tool like <a href="https://www.beast2.org/tracer-2/">Tracer</a>.</p></li>
+</ul>
+</div>
+<p>NEXT, let’s click on Lineages in the upper tool bar. In the bottom left corner, you can change branch coloring between Credibility and Metadata (Country). You can also change the credibility threshold (posterior support) for nodes’/branches’ shading in the tree displayed.</p>
+<div type="orange" style="regular" title="Questions" collapsible="false" icon="true">
+<ul>
+<li><p>Is the first bifurcation at the root well-supported?</p></li>
+<li><p>What is the median posterior root date?</p></li>
+</ul>
+</div>
+<div type="green" style="regular" title="Answers" collapsible="true" icon="true">
+<ul>
+<li><p>No, the credibility threshold is &lt;50%.</p></li>
+<li><p>Median posterior root date ~19 July 2020. Normally a 95% HPD should be reported, but Delphy does not show that directly. If you have time/interest, you can read the exported data into R and estimate the uncertainty.</p></li>
+</ul>
+</div>
+<p>And now click on Mutations in the upper tool bar. Click on recurrent mutations, then A17615G. This mutation may have evolved independently multiple times, though it was only found in 70 genomes. It is a non-synonymous mutation in the ORF1b gene, resulting in an amino acid change of Lysine to Arginine (K1383R) in the nsp10 protein. Explore the other mutations that occurred in the phylogeny.</p>
+<div type="orange" style="regular" title="Questions" collapsible="false" icon="true">
+<ul>
+<li><p>Where does the Delphy analysis suggest the root of this B.1.1.7 phylogeny occurred?</p></li>
+<li><p>Does the Bayesian analysis corroborate the maximum likelihood analysis in terms of the time and place of origin of B.1.1.7?</p></li>
+</ul>
+</div>
+<div type="green" style="regular" title="Answers" collapsible="true" icon="true">
+<ul>
+<li><p>The UK</p></li>
+<li><p>Yes! Both the Bayesian and ML analyses suggest this lineage originated around August 20, 2020 in the UK. This is very close to the estimate from <a href="https://academic.oup.com/ve/article/8/2/veac080/6677185">Hill et al. 2022</a> of a “TMRCA of the Alpha clade estimated at 28 August 2020 (95 % HPD: 15th August 2020 to 9th September 2020)”.</p></li>
+</ul>
+</div>
+</div>
+<div id="export-results" class="section level2 hasAnchor">
+<h2>6.4. Export results<a href="delphy-analysis.html#export-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To wrap this Delphy analysis up, go to Customize, then in the bottom left, export the Tree as png and Newick file, and the Delphy run. The Delphy run file can be dropped back into Delphy or read into R. You can also generate input/output to BEAST to run a more <em>bespoke</em> Bayesian analysis.</p>
+<p><a name="end"></a></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visualizing-the-phylodynamic-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="end-of-lab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/bioinformaticsdotca//blob/main/050-module-5.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
