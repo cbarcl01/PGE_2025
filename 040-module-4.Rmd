@@ -10,8 +10,8 @@ Link to PDF of slides from google
 
 ## Lab
 
-1. [Background](#intro)
-2. [Setup](#setup)
+1. [Background](#intro1)
+2. [Setup](#setup1)
 3. [Cluster Identification](#cluster)
 4. [SNP Analysis](#snp)
 5. [Transmission Inference](#trans)
@@ -27,9 +27,9 @@ This practical will step you through the genomic components of a typical nosocom
 - Inferring outbreak phylogenies
 - Performing transmission inference
 
-<a name="intro"></a>
 
-### Background
+
+### Background {#intro1}
 
 *Staphylococcus aureus* is a Gram-positive coccoidal bacteria that forms a normal commensal member of the microbiome in 20-40% of people ([Karsten, 2017](https://doi.org/10.1016/j.ijmm.2016.11.007)). However, when skin and mucosal barriers are disrupted (e.g., through medical procedures such as catheterisation, tracheal tubes, surgeries) *S. aureus* can cause opportunistic invasive infections ([Lee, 2018](https://doi.org/10.1038/nrdp.2018.33)).   
 
@@ -45,9 +45,9 @@ They have performed a systematic review of all MRSA isolates from the SCBU/NICU 
 You are a clinical bioinformatician who has been asked to support the investigation and analyses these genomes
 ::::
 
-<a name="setup"></a>
 
-### Set-Up
+
+### Set-Up {#setup1}
 
 This lab practical will involve running the following software:
 
@@ -129,9 +129,9 @@ curl http://checkip.amazonaws.com
 
 This should print a number like XX.XX.XX.XX. Once you have your address, try going to <http://xx.uhn-hpc.ca> or <http://IP-ADDRESS> and clicking the link for **module4**. This page will be referred to later to easily download/view some of our output files. 
 
-<a name="cluster"></a>
 
-### Cluster Identification
+
+### Cluster Identification {#cluster}
 
 All isolates that are putatively linked to the outbreak have been done so on the basis of time, location, and phenotype (specifically antibiotic susceptibilities). However, just because 2 isolates have the same resistance pattern does not mean they are closely related. 
 Although this is a relatively small set of isolates we are often evaluating very large numbers of genomes for their potential connection to an outbreak.
@@ -207,9 +207,9 @@ P27-28 are assigned to cluster 1 and P30-33 are assigned cluster 12.  Remaining 
 We can't be sure about cluster 3 without further analysis but we can drop cluster 1 and 12 for now.
 ::::
 
-<a name="snp"></a>
 
-### SNP Analysis
+
+### SNP Analysis {#snp}
 
 Now that we have eliminated some isolates that are unlikely to be connected to our main outbreak we can do a deeper analysis of the evolutionary relationships between our isolates.  For this we are going to perform a phylogenetic analysis. There are several way this could be done: 
 
@@ -328,8 +328,8 @@ A pre-computed distance matrix and phylogeny can be copied from `~/CourseData/mo
 
 ::::
 
-<a name="trans"></a>
-### Transmission Inference
+
+### Transmission Inference {#trans}
 
 With our refined outbreak distance matrix and phylogeny we are going to perform some transmission analyses by combining these with some of our context data.  
 

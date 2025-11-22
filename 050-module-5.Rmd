@@ -5,17 +5,7 @@
 
 ## Lab
 
----
-layout: tutorial_page
-permalink: /IDE_2025_Module5_lab
-title: IDE Module 5 Lab
-header1: Phylodynamics of SARS-CoV-2 B.1.1.7
-header2: Infectious Disease Genomic Epidemiology Module 5 Lab
-home: https://bioinformaticsdotca.github.io/IDE_2025
-description: Phylodynamics of SARS-CoV-2 B.1.1.7
-author: Angela McLaughlin and Finlay Maguire
-modified: Nov 16 2025
----
+Author: Angela McLaughlin and Finlay Maguire
 
 ### Table of contents
 1. [Introduction](#intro-mod5)

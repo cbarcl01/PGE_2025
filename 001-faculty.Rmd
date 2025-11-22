@@ -43,8 +43,8 @@ Finlay Maguire is a genomic epidemiologist whose work centers on leveraging data
 
 <img src="./img/faculty/gary-vandomselaar.png" width="200" alt="Photo of Gary Van Domselaar">
 
->Chief, Bioinformatics, National Microbiology Laboratory <br>
-Public Health Agency of Canada<br>
+>Associate Professor <br>
+University of Manitoba <br>
 Winnipeg, MB, Canada
 >
 > --- gary.vandomselaar@phac-aspc.gc.ca
