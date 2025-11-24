@@ -94,10 +94,71 @@ To do so, navigate to the releases page and under the most recent release go to 
 
 In this exercise, participants will curate three datasets that will be reused in subsequent workshop modules (pathogen typing, outbreak analysis, and phylodynamics). The aim is to experience practical data cleaning and validation within the DataHarmonizer.
 
+#### 3.1 Curating MRSA data using a One Health AMR data standard
+
+The dataset originates from Bacterial and Viral Bioinformatics Resource Center (BV-BRC) contextual data for Methicillin-resistant Staphylococcus aureus (MRSA) isolates that will be run through chewBBACA for cgMLST allele calling and clustering in a later module. Before running those analyses, participants must ensure the contextual data is properly cleaned and standardised.
+
+1. Locate and download the **3-1_MRSA_AUS_curation.csv** dataset - this can be found at *http://##.uhn-hpc.ca/module1/MRSA_data*  (replace the ## with your student number).
+2. Open the **OneHealthCBW** template from the template dropdown.
+3. Review the prioritized information and the mapping schema provided by the instructor (included below).
+4. Enter the information in the DataHarmonizer template according to the mapping, using the drop down menus where appropriate. 
+    i. Start with record **1280_21138** (this should be the first record in the dataset).
+    ii. Curate as many records as you can in the given time.
+5. Check your curated data against the answer key provided in the Module 1 folder. 
+
+BV-BRC Field | OneHealthCBW Module | OneHealthCBW Field
+---|---|---
+Genome ID | Database identifiers | BV-BRC genome ID
+MLST | Genotyping information | genotyping method
+Contigs | Bioinformatics and QC metrics | number of contigs
+Size | Bioinformatics and QC metrics | sequence assembly length
+CDS | Bioinformatics and QC metrics | number of coding sequences (CDS)
+Isolation source | Sample collection and processing | anatomical material
+Collection Date | Sample collection and processing | sample collection date
+Isolation Country | Sample collection and processing | geo_loc name (country)
+Host Common Name | Host information | host (common name)
+
+#### 3.2 Validating MRSA outbreak data
+
+In this scenario a patient in a hospital was found to be suffering from a foot wound with painful pus-filled sores as well as pneumonia-like symptoms. PCR and culture-based antimicrobial phenotypic testing indicated that the patient was infected with MRSA. Other patients in the hospital were also found to have similar infections in the same week. The data suggested that an outbreak was occurring and so outbreak investigation protocols were triggered. Isolates were sequenced and clusters characterized as part of the evidence used in the investigation.
+
+In order to run the outbreak analyses we need to clean the contextual data. A ‘dirty’ dataset with known contextual data issues is provided. We will open this data in the DataHarmonizer and use the validation feature to tidy this ready for analysis.
+
+1. Locate and download the **3-2_MRSA_outbreak.csv** dataset - this can be found at *http://##.uhn-hpc.ca/module1/MRSA_data*  (replace the ## with your student number).
+2. Reset your view by going to File -> New and select ‘Clear’ if you see a pop requesting asking if you would like to clear existing data.
+3. Open the downloaded dataset for cleaning: Go to File -> Open -> Choose downloaded file
+4. Explore the fields. Note what types of fields are populated. Are there any others you think may be useful for future analysis?
+5. Press validate to check for errors and resolve any found.
+    i. Use the ‘Next error’ button to navigate through checking for any errors (highlighted in red). 
+    ii. Apply corrections, focusing on invalid date formats, geographical locations.
+    iii. Once you have fixed all errors press ‘validate’ again. The ‘Next error’ button should disappear.
+
+#### 3.3 Curating SARS-CoV-2 data for phylodynamics analysis
+
+This SARS-CoV-2 dataset is designed for downstream phylodynamics (molecular clock, growth rate estimation, spatiotemporal reconstruction).These analyses require precise and **complete dates** and **geographical resolution** hence, careful contextual data curation is essential.
+
+1. Locate and download the **3-3_SC2_datesUK_small.csv** dataset - this can be found at *http://##.uhn-hpc.ca/module1/SC2_B117_data*  (replace the ## with your student number).
+2. For this curation exercise, we need to use a different standard. Switch to the correct template by using the template dropdown and selecting **SC2CBW**.
+3. Review the prioritised information and the mapping schema provided by the instructor (included in the table below).
+4. In the data identify  Enter the information from the record w in the DataHarmonizer template according to the mapping, using the drop down menus where appropriate.
+5. Check your curated data against the **3-3_SC2_small_cleaned.csv** answer key provided in the Module 1 folder. 
+
+Original Field | SC2CBW Module | SC2 Field
+---|---|---
+Sequence name | Bioinformatics and QC metrics | consensus sequence name
+Accession | Database identifiers | INSDC assembly accession
+Organism name | Sample collection and processing | number of contigs
+Pangolin | Lineage and Variant information | lineage/clade name
+PangoVersions | Lineage and Variant information | lineage/clade analysis software name; lineage/clade analysis software version
+Length | Bioinformatics and QC metrics | sequence assembly length
+Geo-Location | Sample collection and processing | geo_loc name (country); geo_loc name (state/province/territory); geo_loc name (city)
+Host | Host information | host (scientific name)
+Tissue Specimen Source | Sample collection and processing | anatomical part
+Collection Date | Sample collection and processing | sample collection date
 
 ### Using EBI OLS to identify controlled vocabulary {#exercise4}
 
-Identifying standardized terms is key for developing interoperable standards. The EBI’s ontology look-up service (OLS) is an important tool for searching, comparing, and evaluating available vocabulary in different thesauri and ontologies.
+Identifying standardised terms is key for developing interoperable standards. The EBI’s ontology look-up service (OLS) is an important tool for searching, comparing, and evaluating available vocabulary in different thesauri and ontologies.
 
 Participants will use the lessons and guidance from the lecture component of the lab to identify standardized terms using OLS for capturing the descriptive text provided in the exercise.
 
