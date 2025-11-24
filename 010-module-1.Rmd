@@ -7,6 +7,103 @@
 
 ## Lab
 
+*Author: Emma Griffiths and Charlie Barclay*
+
+*Last Modified: 2025-11-23*
+
+
+1. [Overview](#intro1)
+2. [Part 1: Exploring data heterogeneity across repositories](#exercise1)
+3. [Part 2: DataHarmonizer demonstration](#exercise2)
+4. [Part 3: Curation using the DataHarmonizer](#exercise3)
+5. [Part 4: EBI OLS](#exercise4)
+
+### Background {#intro1}
+
+High quality contextual data (often described as metadata) is essential for genomic epidemiology workflows from MLST and cgMLST profiling to clustering, phylogenetics, and outbreak interpretation. While public repositories can be a useful source in identifying data, the associated contextual data is often heterogeneous, inconsistent or incomplete and analytical tools rely on standardised inputs to produce reliable results.
+
+The PGE Data curation and sharing lab is designed to give participants hands-on experience using curation methods and standardisation tools to prepare real-world datasets for downstream analysis. Across the integrated exercises, participants will explore repository variation, learn how to structure and validate contextual data using the DataHarmonizer, curate three datasets for use in later modules, and apply ontologies to ensure terminological consistency across sources.
+
+The session emphasizes reproducibility, interoperability, and the role of contextual data standards in ensuring robust genomic analysis.
+
+The lab experience is divided into four parts that consist of: 
+- An **exploratory exercise** to review the content and structure of contextual data within public repository records (NCBI and BV-BRC). 
+- A **demonstration** of a data curation and validation tool called the **DataHarmonizer**.
+- A **data curation** exercise where participants practice interpreting and structuring  three contextual datasets, to create analysis-ready contextual data for later modules in the workshop series.
+- An **ontology search exercise** using the EBI OLS to look up standardised ontology equivalents for selected terms to build their own controlled vocabulary list to improve semantic consistency.
+
+### Exploring data heterogeneity across repositories {#exercise1}
+
+**Aim:** To observe and compare how contextual; data for the same bacterial samples (MRSA) are represented in two public repositories, BV-BRC and NCBI BioSample, and to identify inconsistencies that affect downstream analyses such as pathogen identification, outbreak investigation, and phylodynamics.
+
+![BVBRC_filter](https://github.com/cbarcl01/PGE_2025/blob/main/img/module1/BVBRC_filter.gif)
+
+1. Access the repository: BV-BRC [Bacterial and Viral Bioinformatics Resource Center](https://www.bv-brc.org/)
+2. Use the search dropdown to select *Genomes* and type *Staphylococcus aureus* into the search bar.
+3. Filter your seach for:
+    i.  Keywords: MRSA
+    ii. Collection Year: 2009
+    iii. Isolation country: Australia
+
+:::: {.callout type="blue" style="subtle" title="Checkpoint: How many results did you get?" collapsible="true"}
+
+Answer: 41. If you look at the bottom of the page you should see **1 - 41 of 41 results** (correct as of 23rd November)
+
+::::
+
+4. Click on collection year again to remove the filter. Instead filter by 2004 
+5. Select the second record **Staphylococcus aureus strain JKD6004**.
+6. Review the details pane to identify the contextual information including the BioSample accession number.
+7. Review the same sample in NCBI BioSample repository:
+    i. In the details pane, follow the link to the appropriate BioSample.
+    ii. Alternatively, copy the accession number (e.g., SAMN12345678 or equivalent) from the BV-BRC record and paste it into the NCBI BioSample search bar.
+8. Compare contextual data fields between the two repositories. 
+
+
+### DataHarmonizer demonstration {#exercise2}
+
+The **DataHarmonizer** is a spreadsheet based validation tool which facilitates the application of data standards. The instructor will provide a brief overview of the DataHarmonizer tool, with examples of how to enter, validate and transform data for repository submission. 
+
+To complete the curation exercises participants can use a test version of the DataHarmonizer, with templates designed for this course. Participants can find the test version of the DataHarmonizer on their student instances under module1. The tool will need extracting prior to use.
+
+1. Download and unzip the DataHarmonizer
+    i. Go to your workspace at http://##.uhn-hpc.ca/ *replace the ## with your student number*
+    ii. Navigate into the folder CourseData/module1
+    iii. Download the provided dataharmonizer.zip
+    iv. Extract (unzip) the folder to a location on your computer where you can easily find it.
+2. Open the DataHarmonizer: Inside the extracted folder, navigate to dist → index.html. Double click index.html to open the tool.
+3. Follow along with the demonstration. The instructor will:
+    i. Introduce the interface including layout, menus and the validation feature.
+    ii. Explain how the templates encode standards e.g. how the required vs recommended fields are indicated.
+    iii. Demonstrate entering data into a few fields.
+    iv. Show the data after ‘validation’.
+
+
+Note that in the address bar, the local address for the app is stored. The application is local to your machine and no data is shared online.
+
+**Alternative link:** If unable to download through your student instance then you can download the [dataharmonizer.zip](https://drive.google.com/uc?export=download&id=1mfLHfzPVOA6avBEoFhiAsIMfXuBrIMQp). Unzip the folder and open the interface by going to the dist folder and navigating to 'main.html'.
+
+:::: {.callout type="blue"}
+**Additional resources:** Participants interested in curating their own data using the DataHarmonizer after the course are welcome to download the full tool at https://github.com/cidgoh/pathogen-genomics-package/. 
+
+To do so, navigate to the releases page and under the most recent release go to the source code. Download the zip file appropriate for your operating system. Extract the files and continue as before.
+::::
+
+
+### Curation using the DataHarmonizer {#exercise3}
+
+In this exercise, participants will curate three datasets that will be reused in subsequent workshop modules (pathogen typing, outbreak analysis, and phylodynamics). The aim is to experience practical data cleaning and validation within the DataHarmonizer.
+
+
+### Using EBI OLS to identify controlled vocabulary {#exercise4}
+
+Identifying standardized terms is key for developing interoperable standards. The EBI’s ontology look-up service (OLS) is an important tool for searching, comparing, and evaluating available vocabulary in different thesauri and ontologies.
+
+Participants will use the lessons and guidance from the lecture component of the lab to identify standardized terms using OLS for capturing the descriptive text provided in the exercise.
+
+
+
+
 <iframe src="https://docs.google.com/presentation/d/1_1Xqp5aaopBwsgyKpiXAG5wP192nUmPV/preview" width="640" height="480" allow="autoplay"></iframe>  
 
 
