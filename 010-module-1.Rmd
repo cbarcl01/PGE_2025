@@ -162,8 +162,27 @@ Identifying standardised terms is key for developing interoperable standards. Th
 
 Participants will use the lessons and guidance from the lecture component of the lab to identify standardized terms using OLS for capturing the descriptive text provided in the exercise.
 
+Open the link for the [EBI-OLS website](https://www.ebi.ac.uk/ols4/) in any browser. Create the following chart in a text editor:
+
+Description | Standardized label | Ontology ID
+---|---|---
+Inner lining of the cheek |  | 
+Sample collection method - saline mouth rinse |  | 
+BAL lung fluid collection |  | 
+garbanzo bean |  | 
 
 
+1. Enter one of the descriptors provided in the OLS search bar and press Search.
+2. Examine the list of hits that appear, and consider the following when selecting the best match:
+    i. The definition
+    ii. The granularity of the suggested term
+    iii. The domain of the source ontology
+    iv. Reuse of the term in different ontologies
+3. Select the best match and capture the standardized label, the ontology ID, and the term definition in the chart.
+
+![ebiolssearch](https://github.com/cbarcl01/PGE_2025/blob/main/img/module1/ebiols.gif)
+
+---------
 
 <iframe src="https://docs.google.com/presentation/d/1_1Xqp5aaopBwsgyKpiXAG5wP192nUmPV/preview" width="640" height="480" allow="autoplay"></iframe>  
 
